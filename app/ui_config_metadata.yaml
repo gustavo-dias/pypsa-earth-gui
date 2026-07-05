@@ -1,0 +1,4410 @@
+version:
+  disabled: false
+  visible: true
+  width: 200
+  type: text_input
+  helper: ''
+tutorial:
+  disabled: false
+  visible: true
+  type: checkbox
+  helper: ''
+logging:
+  level:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  format:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+results_dir:
+  disabled: false
+  visible: true
+  width: 200
+  type: text_input
+  helper: ''
+summary_dir:
+  disabled: false
+  visible: true
+  width: 200
+  type: text_input
+  helper: ''
+foresight:
+  disabled: false
+  visible: true
+  width: 200
+  type: text_input
+  helper: ''
+countries:
+  disabled: false
+  visible: true
+  width: 200
+  type: multiselect
+  options: !!python/tuple
+  - ./app/config/data/sources/country_iso_code.csv
+  - Code
+  helper: ''
+enable:
+  retrieve_databundle:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: Recommended 'true', for the first run. otherwise data might be missing.
+  retrieve_databundle_sector:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  retrieve_cost_data:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: 'True: retrieves cost data from technology data and saves in resources/costs.csv,
+      false: uses cost data in data/costs.csv'
+  retrieve_cutout:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  download_osm_data:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If 'true', openstreetmap data will be downloaded for the above given countries
+  download_global_buildings:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If 'true', globalmlbuildingfootprints data will be downloaded for the
+      above given countries
+  build_natura_raster:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If 'true', then an exclusion raster will be build. otherwise use pregenerated
+      raster.
+  build_cutout:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  progress_bar:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: Show progress bar during downloading routines and other long-running tasks
+  custom_busmap:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If true, use "data/custom_busmap_elec_s{simpl}_{clusters}.csv" for the
+      clustering instead of the clustering algorithms
+custom_rules:
+  disabled: false
+  visible: true
+  width: 200
+  type: multiselect
+  options: []
+  helper: Default empty [] or link to custom rule file e.g. ["my_folder/my_rules.smk"]
+    that add rules to snakefile
+run:
+  name:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: Use this to keep track of runs with different settings
+  sector_name:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: Use this to keep track of sector scenario runs
+  shared_cutouts:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: Set to true to share the default cutout(s) across runs
+  allow_scenario_failure:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If true, the workflow will continue even if a scenario in run_scnenario
+      fails
+scenario:
+  simpl:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  ll:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  clusters:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  opts:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  planning_horizons:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: Investment years for myopic and perfect; or costs year for overnight
+  sopts:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  demand:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+snapshots:
+  start:
+    disabled: false
+    visible: true
+    width: 200
+    type: date_input
+    helper: ''
+  end:
+    disabled: false
+    visible: true
+    width: 200
+    type: date_input
+    helper: ''
+  inclusive:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: End is not inclusive
+crs:
+  geo_crs:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: General geographic projection, not used for metric measures. "epsg:4326"
+      is the standard used by osm and google maps
+  distance_crs:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: Projection for distance measurements only. possible recommended values
+      are "epsg:3857" (used by osm and google maps)
+  area_crs:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: Projection for area measurements only. possible recommended values are
+      global mollweide "esri:54009"
+natura:
+  natura_size:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: Countries, cutout, or global. select which regions to include in the natura
+      raster.
+  natura_resolution:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: '[m] grid resolution of the natura data.'
+  window_size:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: '[bytes] size of the shifting rasterization window. the required ram scales
+      with window_size^2.'
+  buffer_size:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: '[unit of area_crs, default: m] buffer around the regions of interest
+      to include every required value. a buffer of around 100 km will be sufficient
+      for most cases.'
+augmented_line_connection:
+  add_to_snakefile:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: If true, includes this rule to the workflow
+  connectivity_upgrade:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: Min. lines connection per node,
+  new_line_type:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: Expanded lines can be either ["hvac"] or ["hvdc"] or both ["hvac", "hvdc"]
+  min_expansion:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: '[mw] new created line expands by float/int input'
+  min_DC_length:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: '[km] minimum line length of dc line'
+cluster_options:
+  simplify_network:
+    to_substations:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: Network is simplified to nodes with positive or negative power injection
+        (i.e. substations or offwind connections)
+    algorithm:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: 'Choose from: [hac, kmeans]'
+    feature:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: 'Only for hac. choose from: [solar+onwind-time, solar+onwind-cap, solar-time,
+        solar-cap, solar+offwind-cap] etc.'
+    exclude_carriers:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    remove_stubs:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    remove_stubs_across_borders:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    p_threshold_drop_isolated:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: '[mw] isolated (sub)networks or nodes are being discarded if total mean
+        power is below the specified threshold'
+    p_threshold_merge_isolated:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: '[mw] isolated (sub)networks or nodes are being merged into a single
+        isolated bus if total mean power is below the specified threshold'
+    s_threshold_fetch_isolated:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: '[-] a share of the national load for merging an isolated network into
+        a backbone network'
+  cluster_network:
+    algorithm:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    feature:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    exclude_carriers:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+  alternative_clustering:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: '"false" use voronoi shapes, "true" use gadm shapes'
+  distribute_cluster:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: Distributes cluster nodes per country according to ['load'],['pop'] or
+      ['gdp']
+  out_logging:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: When "true", logging is printed to console
+  aggregation_strategies:
+    generators:
+      p_nom:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      p_nom_max:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: Sets the expansion constraint, false to deactivate this option and
+          use estimated renewable potentials determine by the workflow, float scales
+          the p_nom_min factor accordingly
+      p_nom_min:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      p_min_pu:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      p_max_pu:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      marginal_cost:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: Eur/mwh
+      committable:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      ramp_limit_up:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      ramp_limit_down:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      efficiency:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      build_year:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      lifetime:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    one_ports:
+      StorageUnit:
+        build_year:
+          disabled: false
+          visible: true
+          width: 200
+          type: text_input
+          helper: ''
+        lifetime:
+          disabled: false
+          visible: true
+          width: 200
+          type: text_input
+          helper: ''
+  focus_weights:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+build_shape_options:
+  gadm_layer_id:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  simplify_tolerance:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  simplify_gadm:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  minarea:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  update_file:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  out_logging:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  nprocesses:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  worldpop_method:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  gdp_method:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  contended_flag:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+subregion:
+  method:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: Barrier
+  apply_on:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  define_by_gadm:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  path_custom_shapes:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  path_custom_offshore:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  tolerance:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+clean_osm_data_options:
+  names_by_shapes:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  threshold_voltage:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  tag_substation:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  add_line_endings:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  generator_name_method:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  use_custom_lines:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  path_custom_lines:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  use_custom_substations:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  path_custom_substations:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  use_custom_cables:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  path_custom_cables:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+build_osm_network:
+  group_close_buses:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  group_tolerance_buses:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  split_overpassing_lines:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  overpassing_lines_tolerance:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  force_ac:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+base_network:
+  min_voltage_substation_offshore:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  min_voltage_rebase_voltage:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+load_options:
+  source:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  weather_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  prediction_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  scale:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+co2_budget:
+  enable:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  override_co2opt:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  co2base_value:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  year:
+    2020:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2025:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2035:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2040:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2045:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+electricity:
+  base_voltage:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  voltages:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  co2limit:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  co2base:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  agg_p_nom_limits:
+    file:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    include_existing:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  hvdc_as_lines:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  automatic_emission:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  automatic_emission_base_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  operational_reserve:
+    activate:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    epsilon_load:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    epsilon_vres:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    contingency:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  max_hours:
+    battery:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    H2:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  extendable_carriers:
+    Generator:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    StorageUnit:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    Store:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    Link:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+  powerplants_filter:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  custom_powerplants:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  conventional_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  renewable_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  estimate_renewable_capacities:
+    stats:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    year:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    p_nom_min:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    p_nom_max:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    technology_mapping:
+      Offshore:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+      Onshore:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+      PV:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+lines:
+  ac_types:
+    132.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    220.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    300.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    380.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    500.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    750.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+  dc_types:
+    500.0:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+  s_max_pu:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  s_nom_max:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  s_nom_max_min:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  length_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  under_construction:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+links:
+  p_max_pu:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  p_nom_max:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  p_nom_max_min:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  under_construction:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+transformers:
+  x:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  s_nom:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  type:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+atlite:
+  nprocesses:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  cutouts:
+    cutout-2013-era5:
+      module:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      dx:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      dy:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+  default:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+renewable:
+  onwind:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: Barrier
+      turbine:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    capacity_per_sqkm:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    copernicus:
+      grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+      distance:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      distance_grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    natura:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  offwind-ac:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: Barrier
+      turbine:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    capacity_per_sqkm:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    copernicus:
+      grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    natura:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    max_depth:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    max_shore_distance:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  offwind-dc:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      turbine:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    capacity_per_sqkm:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    copernicus:
+      grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    natura:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    max_depth:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    min_shore_distance:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  solar:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      panel:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      orientation:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    capacity_per_sqkm:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    correction_factor:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    copernicus:
+      grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    natura:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  hydro:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    hydrobasins_level:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      hydrobasins:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      flowspeed:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    carriers:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    PHS_max_hours:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    hydro_max_hours:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    hydro_max_hours_default:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    clip_min_inflow:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    normalization:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      year:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    multiplier:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    hydro_min_inflow_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  csp:
+    cutout:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resource:
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      installation:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+    capacity_per_sqkm:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    copernicus:
+      grid_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+      distancing_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+      distance_to_codes:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    natura:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    extendable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    csp_model:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+costs:
+  year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  technology_data_version:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  discountrate:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  country_specific_data:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  cost_scenario:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  financial_case:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  output_currency:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  default_exchange_rate:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  future_exchange_rate_strategy:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  custom_future_exchange_rate:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  rooftop_share:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  fill_values:
+    FOM:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    VOM:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    efficiency:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    fuel:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    investment:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    lifetime:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    CO2 intensity:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    discount rate:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  marginal_cost:
+    solar:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    onwind:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    offwind:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    hydro:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    H2:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    electrolysis:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    fuel cell:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    battery:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    battery inverter:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  emission_prices:
+    co2:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  lines:
+    length_factor:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+monte_carlo:
+  options:
+    add_to_snakefile:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    samples:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    sampling_strategy:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    seed:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  uncertainties:
+    loads_t.p_set:
+      type:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      args:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    generators_t.p_max_pu.loc[:, n.generators.carrier == "onwind"]:
+      type:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      args:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+    generators_t.p_max_pu.loc[:, n.generators.carrier == "solar"]:
+      type:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      args:
+        disabled: false
+        visible: true
+        width: 200
+        type: multiselect
+        options: []
+        helper: ''
+policy_config:
+  hydrogen:
+    temporal_matching:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    spatial_matching:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    temporal_matching_carriers:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    matching_technologies:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    additionality:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    allowed_excess:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    is_reference:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    remove_h2_load:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    path_to_ref:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    re_country_load:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+demand_data:
+  update_data:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  base_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  other_industries:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  aluminium_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+fossil_reserves:
+  oil:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+export:
+  endogenous:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  endogenous_price:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  store:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  store_capital_costs:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  h2export:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  export_profile:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  ship:
+    ship_capacity:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    travel_time:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    fill_time:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    unload_time:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+custom_data:
+  heat_demand:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  industry_demand:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  industry_database:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  transport_demand:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  water_costs:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  h2_underground:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  add_existing:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  custom_sectors:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  gas_network:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  export_ports:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  airports:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+industry:
+  reference_year:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+solar_thermal:
+  clearsky_model:
+    disabled: false
+    visible: true
+    width: 200
+    type: text_input
+    helper: ''
+  orientation:
+    slope:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    azimuth:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+existing_capacities:
+  grouping_years_power:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  grouping_years_heat:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  threshold_capacity:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  default_heating_lifetime:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  conventional_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+sector:
+  enable:
+    heat:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    biomass:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    industry:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    shipping:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    aviation:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    land_transport:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    rail_transport:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    agriculture:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    residential:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    services:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  gas:
+    spatial_gas:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    network:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    network_data:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    network_data_GGIT_status:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+  hydrogen:
+    network:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    H2_retrofit_capacity_per_CH4:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    network_limit:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    network_routes:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    gas_network_repurposing:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    underground_storage:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    hydrogen_colors:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    set_color_shares:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    blue_share:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    pink_share:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    production_technologies:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+  coal:
+    spatial_coal:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    shift_to_elec:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  lignite:
+    spatial_lignite:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  oil:
+    spatial_oil:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  district_heating:
+    potential:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    progress:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    district_heating_loss:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  reduce_space_heat_exogenously:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  reduce_space_heat_exogenously_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  space_heat_share:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  tes:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  tes_tau:
+    decentral:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    central:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  boilers:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  oil_boilers:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  chp:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  micro_chp:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  solar_thermal:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  heat_pump_sink_T:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  time_dep_hp_cop:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  solar_cf_correction:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_plug_to_wheel_efficiency:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_charge_efficiency:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  transport_heating_deadband_upper:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  transport_heating_deadband_lower:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  ICE_lower_degree_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  ICE_upper_degree_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  EV_lower_degree_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  EV_upper_degree_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_avail_max:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_avail_mean:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_dsm_restriction_value:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_dsm_restriction_time:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  v2g:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  bev_dsm:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  bev_energy:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  bev_availability:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  transport_fuel_cell_efficiency:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  transport_internal_combustion_efficiency:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  land_transport_fuel_cell_share:
+    BU_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AB_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    BU_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  land_transport_electric_share:
+    BU_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AB_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    BU_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  dynamic_transport:
+    enable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    land_transport_fuel_cell_share:
+      Co2L2.0:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L1.0:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.90:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.80:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.70:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.60:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.50:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.40:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.30:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.20:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.10:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.00:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    land_transport_electric_share:
+      Co2L2.0:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L1.0:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.90:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.80:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.70:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.60:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.50:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.40:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.30:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.20:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.10:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Co2L0.00:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+  biomass_transport:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  biomass_transport_default_cost:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  solid_biomass_potential:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  biogas_potential:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  electricity_distribution_grid:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  enable_electricity_connection_cost:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  solar_rooftop:
+    enable:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    kW_per_m2:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    m2_per_person:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    use_building_size:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    install_ratio:
+      0:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      10:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      100:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      200:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      450:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      2300:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    tolerance:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  home_battery:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  transmission_efficiency:
+    electricity distribution grid:
+      efficiency_static:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    H2 pipeline:
+      efficiency_per_1000km:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      compression_per_1000km:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+  shipping_hydrogen_liquefaction:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  shipping_average_efficiency:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  shipping_hydrogen_share:
+    BU_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AB_2030:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    BU_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    AP_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    NZ_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    DF_2050:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+  airport_sizing_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  international_bunkers:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  co2_network:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  co2_sequestration_potential:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  co2_sequestration_cost:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  methanation:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  helmeth:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  dac:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  cc_fraction:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  cc:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  fischer_tropsch:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  min_part_load_fischer_tropsch:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  industry_util_factor:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  efficiency_heat_oil_to_elec:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  efficiency_heat_biomass_to_elec:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  efficiency_heat_gas_to_elec:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  conventional_generation:
+    OCGT:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    CCGT:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    oil:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    coal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    lignite:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    biomass:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+  keep_existing_capacities:
+    disabled: false
+    visible: true
+    type: checkbox
+    helper: ''
+  marginal_cost_storage:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+solving:
+  options:
+    formulation:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    load_shedding:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    noisy_costs:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    min_iterations:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    max_iterations:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    clip_p_max_pu:
+      disabled: false
+      visible: true
+      width: 200
+      type: number_input
+      helper: ''
+    skip_iterations:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+    track_iterations:
+      disabled: false
+      visible: true
+      type: checkbox
+      helper: ''
+  solver:
+    name:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    options:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+  solver_options:
+    highs-default:
+      threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      solver:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      run_crossover:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      small_matrix_value:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      large_matrix_value:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      primal_feasibility_tolerance:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      dual_feasibility_tolerance:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      ipm_optimality_tolerance:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      parallel:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      random_seed:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    gurobi-default:
+      threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      crossover:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      BarConvTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Seed:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      AggFill:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      PreDual:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      GURO_PAR_BARDENSETHRESH:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    gurobi-numeric-focus:
+      NumericFocus:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      crossover:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      BarHomogeneous:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: Use homogeneous barrier if standard does not converge
+      BarConvTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      FeasibilityTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      OptimalityTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      ObjScale:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Seed:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    gurobi-fallback:
+      crossover:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      method:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      BarHomogeneous:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      BarConvTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      FeasibilityTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      OptimalityTol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Seed:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    cplex-default:
+      threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      lpmethod:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: Barrier
+      solutiontype:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: Non basic solution, ie no crossover
+      barrier.convergetol:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      feasopt.tolerance:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    copt-default:
+      Threads:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      LpMethod:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      Crossover:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    cbc-default: {}
+    glpk-default: {}
+  mem:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+plotting:
+  map:
+    figsize:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    boundaries:
+      disabled: false
+      visible: true
+      width: 200
+      type: multiselect
+      options: []
+      helper: ''
+    p_nom:
+      bus_size_factor:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+      linewidth_factor:
+        disabled: false
+        visible: true
+        width: 200
+        type: number_input
+        helper: ''
+    color_geomap:
+      ocean:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+      land:
+        disabled: false
+        visible: true
+        width: 200
+        type: text_input
+        helper: ''
+  costs_max:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  costs_threshold:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  energy_max:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  energy_min:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  energy_threshold:
+    disabled: false
+    visible: true
+    width: 200
+    type: number_input
+    helper: ''
+  vre_techs:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  conv_techs:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  storage_techs:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  renewable_storage_techs:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  load_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  AC_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  link_carriers:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  heat_links:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  heat_generators:
+    disabled: false
+    visible: true
+    width: 200
+    type: multiselect
+    options: []
+    helper: ''
+  tech_colors:
+    onwind:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    onshore wind:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offwind:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offwind-ac:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offshore wind:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offshore wind ac:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offshore wind (AC):
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offwind-dc:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offshore wind dc:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    offshore wind (DC):
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    wave:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hydro:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hydro+PHS:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    PHS:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hydro reservoir:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hydroelectricity:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    ror:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    run of river:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solar:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solar PV:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solar thermal:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solar rooftop:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    biomass:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solid biomass:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solid biomass for industry co2 from atmosphere:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solid biomass for industry co2 to stored:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    solid biomass for industry CC:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    biogas:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    waste:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    geothermal:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    OCGT:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    OCGT marginal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    OCGT-heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    CCGT:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    natural gas:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas boiler:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas boilers:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas boiler marginal:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas-to-power/heat:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    SMR:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    SMR CC:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    oil boiler:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    oil emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas for industry:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas for industry CC:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    gas for industry co2 to atmosphere:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas for industry co2 to stored:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    nuclear:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Nuclear:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    Nuclear marginal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    uranium:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    coal:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Coal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    Coal marginal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    lignite:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Lignite:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    Lignite marginal:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    H2:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    H2 export:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    H2 for industry:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    H2 for shipping:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    H2 liquefaction:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    hydrogen storage:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    battery:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    battery discharger:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    battery charger:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    EV battery storage:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    home battery:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    home battery storage:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    lines:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    transmission lines:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    AC:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    AC-AC:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    AC line:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    links:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    HVDC links:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    DC:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    DC-DC:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    DC link:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    load:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    load shedding:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Electric load:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    electricity:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    electric demand:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    electricity distribution grid:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    heat:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    Heat load:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    heat pumps:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    heat pump:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    air heat pump:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    ground heat pump:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    CHP:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    CHP heat:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    CHP electric:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    heat demand:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    rural heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    central heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    decentral heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    low-temperature heat for industry:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    process heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    power-to-heat:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    resistive heater:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    Sabatier:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    methanation:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    power-to-gas:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    power-to-liquid:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    helmeth:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    DAC:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    co2 stored:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    CO2 pipeline:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    CO2 sequestration:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    co2:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    co2 vent:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    process emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    process emissions CC:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    process emissions to stored:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    process emissions to atmosphere:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    agriculture heat:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    agriculture machinery oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    agriculture machinery oil emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    agriculture electricity:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Fischer-Tropsch:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    kerosene for aviation:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    naphtha for industry:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    land transport oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    land transport oil emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    land transport fuel cell:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    land transport EV:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    V2G:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    BEV charger:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    shipping:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    shipping oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    shipping oil emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    water tanks:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hot water storage:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hot water charging:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    hot water discharging:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Li ion:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    district heating:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    retrofitting:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    building retrofitting:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    solid biomass transport:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    biomass EOP:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    high-temp electrolysis:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    today:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    Ambient:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    industry coal emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    agriculture oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    gas emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    industry oil emissions:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    industry electricity:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    rail transport electricity:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    solid biomass for industry:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    rail transport oil:
+      disabled: false
+      visible: true
+      type: color_picker
+      helper: ''
+    low voltage:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+  nice_names:
+    OCGT:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    CCGT:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    offwind-ac:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    offwind-dc:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    onwind:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    solar:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    PHS:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    hydro:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    battery:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    H2:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    lines:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+    ror:
+      disabled: false
+      visible: true
+      width: 200
+      type: text_input
+      helper: ''
+default:
+  disabled: false
+  helper: ''
+  type: text_input
+  visible: true
+  width: 200
