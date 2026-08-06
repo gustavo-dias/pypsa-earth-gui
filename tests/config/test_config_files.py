@@ -25,3 +25,4 @@ def test_config_files(
         'default'
     assert ConfigFiles.get_unique_id(Path(config_template_file_names[1])) == \
         'tutorial'
+    assert ConfigFiles.get_unique_id(Path("unknown.yaml")) == None
