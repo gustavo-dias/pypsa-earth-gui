@@ -5,11 +5,11 @@ from pathlib import Path
 from app.config.files import ConfigFiles, ConfigTemplateFiles
 
 
-def test_config_files(
+def test_config_template_files(
         config_template_file_names: list[str],
     ) -> None:
     """"""
-    assert ConfigFiles.to_list() == config_template_file_names
+    assert ConfigTemplateFiles.to_list() == config_template_file_names
 
 
 def test_config_files(
