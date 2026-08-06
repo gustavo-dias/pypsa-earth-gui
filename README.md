@@ -18,26 +18,26 @@ We assume there is a working installation of PyPSA-Earth and all its dependencie
 
 1. Clone the repo to disk:
     ```
-    ~/path/to/installation/dir$ git clone https://github.com/gustavo-dias/pypsa-earth-gui.git
+    git clone https://github.com/gustavo-dias/pypsa-earth-gui.git
     ```
 2. Navigate into the installation directory: 
     ```
-    ~/path/to/installation/dir$ cd pypsa-earth-gui
+    cd pypsa-earth-gui
     ```
 3. Create the conda/mamba environment with the yaml file: 
     ```
-    ~/path/to/installation/dir/pypsa-earth-gui$ conda env create -f ./envs/environment.yaml
+    conda env create -f ./envs/environment.yaml
     ```
 
 ## Usage
 
 1. Activate the conda/mamba environment: 
     ```
-    ~/path/to/installation/dir/pypsa-earth-gui$ conda activate pypsa-earth-gui
+    conda activate pypsa-earth-gui
     ```
 2. Run the application invoking streamlit:
     ```
-    (pypsa-earth-gui) user@machine:~/path/to/installation/dir/pypsa-earth-gui$ streamlit run run.py
+    streamlit run run.py
     ```
 
 The app should open in one of the installed web-browsers.
