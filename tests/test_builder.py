@@ -15,11 +15,11 @@ def test_builder_context(
     """"""
     # missing both required arguments
     with raises(TypeError):
-        BuilderContext()
+        BuilderContext() # type: ignore
     
     # missing second required argument
     with raises(TypeError):
-        BuilderContext(config_file_name)
+        BuilderContext(config_file_name) # type: ignore
 
     # builder default creation
     bc = BuilderContext(
