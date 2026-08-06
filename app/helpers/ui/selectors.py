@@ -30,7 +30,7 @@ def folder_selector(title: str) -> Path | None:
    root = Tk()
    root.withdraw()
    folder_path = filedialog.askdirectory(
-      master=root,
+      parent=root,
       title=title,
       mustexist=True,
       initialdir=f'{expanduser("~")}/Documents',  # carefull nested strings
