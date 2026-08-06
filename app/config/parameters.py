@@ -39,7 +39,7 @@ class Parameter():
         """
         self.name: str = name
         self.hierarchy: list = ancestors + [name]
-        self.value: Any = value
+        self.value = value
         self._widget_metadata: dict = {}
         if (unique_id_prefix is None) or (unique_id_prefix == ''):
             self.unique_id_prefix = self._default_unique_id_prefix
