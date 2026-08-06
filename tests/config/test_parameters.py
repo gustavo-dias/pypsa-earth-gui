@@ -14,10 +14,10 @@ def test_parameter(
     """"""
     # missing two required arguments
     with raises(TypeError):
-        Parameter()
+        Parameter() # type: ignore
     # missing one required argument
     with raises(TypeError):
-        Parameter(parameter_name)
+        Parameter(parameter_name) # type: ignore
 
     # parameter default creation
     p = Parameter(parameter_name, parameter_value)
@@ -45,7 +45,7 @@ def test_parameter(
 
     # widget metadata must be a dict
     with raises(TypeError):
-        p.widget_metadata = 'string'
+        p.widget_metadata = 'string' # type: ignore
 
     # parameter's string representation
     assert str(p) == f'{parameter_name}: {parameter_value}'

@@ -15,5 +15,5 @@ def test_get_date_in_isoformat() -> None:
     with raises(ValueError):
         get_date_in_isoformat("02-07-2026")
 
-    with raises(AttributeError):
-        get_date_in_isoformat(2026)
+    with raises(TypeError):
+        get_date_in_isoformat(2026) # type: ignore

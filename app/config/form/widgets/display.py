@@ -2,7 +2,10 @@
 
 Functions
 ---------
-display_widget_recursively(parameter: Parameter, visited_parameters: set = None) -> None
+display_widget_recursively(
+    parameter: Parameter,
+    visited_parameters: set[Parameter],
+    ) -> None
 """
 
 from pathlib import Path
@@ -21,7 +24,7 @@ logger = get_logger_named(Path(__file__).stem)
 
 def display_widget_recursively(
         parameter: Parameter,
-        visited_parameters: set = None,
+        visited_parameters: set[Parameter],
     ) -> None:
     """Display parameter's widget.
     
@@ -33,7 +36,7 @@ def display_widget_recursively(
     ----------
     parameter: Parameter
         A PyPSA-Earth parameter object.
-    visited_parameters: set
+    visited_parameters: set[Parameter]
         A set containing the visited parameters; used to avoid revisiting when
         backtracking.
     

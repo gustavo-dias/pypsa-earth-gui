@@ -43,7 +43,7 @@ def main() -> None:
         # 1) first we prompt the user whether s/he wants to create a new
         # configuration from scratch or use an existing one (if available).
         try:
-            selected_action: str = st.sidebar.selectbox(
+            selected_action: str | None = st.sidebar.selectbox(
                 label=ACTION_SELECT_LABEL,
                 index=None,
                 options=get_available_configuration_actions(
@@ -59,7 +59,7 @@ def main() -> None:
         else:
             # 2) we decide which config file to be used as reference to render 
             # the config form
-            selected_config_file: str = ''
+            selected_config_file: str | None = ''
 
             match selected_action:
                 case ConfigActions.CREATE:
@@ -79,17 +79,11 @@ def main() -> None:
                     pass
 
             # 3) third we display the configuration form accordingly
-            try:
-                    config_file_path = Path(
-                        pypsa_earth_folder_path,
-                        selected_config_file,
-                    )
-            except TypeError:
-                # Path raises TypeError in case selected_config_file is 
-                # NoneType, which is the case when the user has not selected
-                # a template file yet; no action needed, just pass
-                pass
-            else:
+            if selected_config_file is not None:
+                config_file_path = Path(
+                    pypsa_earth_folder_path,
+                    selected_config_file,
+                )
                 try:
                     # calling set before every display attempt to update the ui
                     # metadata in the app's session state should the ui config

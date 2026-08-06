@@ -11,7 +11,7 @@ from datetime import datetime
 def get_date_in_isoformat(date: str) -> str:
     """Get date in isoformat.
     
-    It is expected date to be in the following pattern: YYYY-MM-DD.
+    It is expected date to be in the following ISO 8601 pattern: YYYY-MM-DD.
 
     Parameters
     ----------
@@ -23,5 +23,4 @@ def get_date_in_isoformat(date: str) -> str:
     str
         The date in isoformat.
     """
-    date = [int(entry) for entry in date.split('-')]
-    return datetime(*tuple(date)).isoformat()
+    return datetime.fromisoformat(date).isoformat()

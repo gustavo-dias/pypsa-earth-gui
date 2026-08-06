@@ -67,7 +67,7 @@ def main() -> None:
         position='sidebar',
     )
 
-    selected_folder_path: Path = get_folder_path_from_ss()
+    selected_folder_path: Path | None = get_folder_path_from_ss()
 
     folder_select_button = st.sidebar.button(
         FOLDER_BUTTON_LABEL,

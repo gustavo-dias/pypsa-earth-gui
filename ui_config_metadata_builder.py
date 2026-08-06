@@ -114,7 +114,7 @@ class BuilderContext():
     def __init__(
             self,
             config_file_name: str,
-            ui_config_metadata_file_name: str,
+            ui_config_metadata_file_path: Path,
             parameter_count: int = 0,
             ui_config_metadata: dict = {},
             default_visible: bool = True,
@@ -126,13 +126,13 @@ class BuilderContext():
         ----------
         config_file_name: str
             Name of the PyPSA-Earth config file used as template for the UI.
-        ui_config_metadata_file_name: str
-            Name of the PyPSA-Earth App UI configuration file.
+        ui_config_metadata_file_path: Path
+            Path to the PyPSA-Earth App UI configuration file.
         parameter_count: int
             Count on the number of config_file_name parameters processed.
         ui_config_metadata: dict
             The actual metadata for the UI; content to be written to 
-            ui_config_metadata_file_name.
+            ui_config_metadata_file_path.
         default_visible: bool
             Default value for the widget's visible attribute.
         defaut_disabled: bool
@@ -140,13 +140,13 @@ class BuilderContext():
         """
         self.config_file_name = config_file_name
         """Name of the PyPSA-Earth config file used as template for the UI."""
-        self.ui_config_metadata_file_name = ui_config_metadata_file_name
-        """Name of the PyPSA-Earth App UI configuration file."""
+        self.ui_config_metadata_file_path = ui_config_metadata_file_path
+        """Path to the PyPSA-Earth App UI configuration file."""
         self.parameter_count = parameter_count
         """Count on the number of config_file_name parameters processed."""
         self.ui_config_metadata = ui_config_metadata
         """The actual metadata for the UI; content to be written to
-        ui_config_metadata_file_name.
+        ui_config_metadata_file_path.
         """
         self.default_disabled = default_disabled
         """Default value for the widget's visible attribute."""
@@ -293,7 +293,7 @@ def get_widget_metadata_for(
 def update_ui_config_metadata(
         context: BuilderContext,
         parameter: Parameter,
-        visited_parameters: set[Parameter] = None,
+        visited_parameters: set[Parameter],
     ) -> None:
     """Set parameter's UI configuration metadata in context.
     
@@ -380,10 +380,10 @@ def main() -> None:
             update_ui_config_metadata(
                 context,
                 Parameter(parameter_name, parameter_value),
-                None,
+                set(),
             )
 
-    with open(context.ui_config_metadata_file_name, 'w') as output_file:
+    with open(context.ui_config_metadata_file_path, 'w') as output_file:
         dump(
             context.ui_config_metadata,
             output_file,

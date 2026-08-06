@@ -125,7 +125,7 @@ def display_widget_for(parameter: Parameter) -> None:
                         accept_new = True
                     else:
                         accept_new = False
-                    st.selectbox(
+                    st.selectbox( # type: ignore
                         label=f"{parameter.label}:",
                         key=parameter.unique_id,
                         default=parameter.value,

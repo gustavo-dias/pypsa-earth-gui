@@ -68,7 +68,7 @@ class ConfigFiles(ConfigTemplateFiles):
         return super().to_list() + [cls.CONFIG]
 
     @classmethod
-    def get_unique_id(cls, config_file_path: Path) -> str:
+    def get_unique_id(cls, config_file_path: Path) -> str | None:
         """Get the unique id from the file name in config_file_path.
         
         The unique identifiers for each entry in ConfigFiles are:
