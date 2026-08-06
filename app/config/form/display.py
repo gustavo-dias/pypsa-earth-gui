@@ -56,7 +56,7 @@ def display_config_form_based_on(config_file_path: Path) -> bool:
                         parameter_value,
                         ConfigFiles.get_unique_id(config_file_path)
                     ),
-                    None,
+                    set(),
                 )
     except IsADirectoryError:
         # display nothing in case config_file_path is a directory
