@@ -1,5 +1,7 @@
 """Tests for the module ui_config_metadata_builder.py"""
 
+from pathlib import Path
+
 from pytest import raises
 from app.config.parameters import Parameter
 from ui_config_metadata_builder import BuilderContext, convert_to_bool
@@ -22,10 +24,11 @@ def test_builder_context(
     # builder default creation
     bc = BuilderContext(
         config_file_name,
-        ui_config_metadata_file_name,
+        Path(ui_config_metadata_file_name),
     )
     assert bc.config_file_name == config_file_name
-    assert bc.ui_config_metadata_file_name == ui_config_metadata_file_name
+    assert bc.ui_config_metadata_file_path == \
+        Path(ui_config_metadata_file_name)
     assert bc.parameter_count == 0
     assert bc.ui_config_metadata == {}
     assert bc.default_visible
@@ -35,14 +38,15 @@ def test_builder_context(
     # builder non default creation
     bc = BuilderContext(
         config_file_name,
-        ui_config_metadata_file_name,
+        Path(ui_config_metadata_file_name),
         6,
         {'type': 'checkbox'},
         False,
         True,
     )
     assert bc.config_file_name == config_file_name
-    assert bc.ui_config_metadata_file_name == ui_config_metadata_file_name
+    assert bc.ui_config_metadata_file_path == \
+        Path(ui_config_metadata_file_name)
     assert bc.parameter_count == 6
     assert bc.ui_config_metadata == {'type': 'checkbox'}
     assert not bc.default_visible
