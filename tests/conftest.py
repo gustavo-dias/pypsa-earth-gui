@@ -74,7 +74,7 @@ def parameter_name() -> str:
     return 'param_2'
 
 @pytest.fixture
-def parameter_value() -> int:
+def parameter_value() -> float:
     """Fixture: get the parameter's value."""
     return 6.6
 
