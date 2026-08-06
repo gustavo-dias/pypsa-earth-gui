@@ -293,7 +293,7 @@ def get_widget_metadata_for(
 def update_ui_config_metadata(
         context: BuilderContext,
         parameter: Parameter,
-        visited_parameters: set[Parameter] = None,
+        visited_parameters: set[Parameter],
     ) -> None:
     """Set parameter's UI configuration metadata in context.
     
@@ -380,7 +380,7 @@ def main() -> None:
             update_ui_config_metadata(
                 context,
                 Parameter(parameter_name, parameter_value),
-                None,
+                set(),
             )
 
     with open(context.ui_config_metadata_file_path, 'w') as output_file:
