@@ -40,7 +40,7 @@ def test_builder_context(
         config_file_name,
         Path(ui_config_metadata_file_name),
         6,
-        {'type': 'checkbox'},
+        {'tutorial': {'type': 'checkbox'}},
         False,
         True,
     )
@@ -48,7 +48,7 @@ def test_builder_context(
     assert bc.ui_config_metadata_file_path == \
         Path(ui_config_metadata_file_name)
     assert bc.parameter_count == 6
-    assert bc.ui_config_metadata == {'type': 'checkbox'}
+    assert bc.ui_config_metadata == {'tutorial': {'type': 'checkbox'}}
     assert not bc.default_visible
     assert bc.default_disabled
     assert bc.helper_line_idx == -1
