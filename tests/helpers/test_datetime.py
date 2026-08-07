@@ -2,18 +2,18 @@
 
 from pytest import raises
 
-from app.helpers.datetime import get_date_in_isoformat
+from app.helpers.datetime import get_date_in_datetime_isoformat
 
 
-def test_get_date_in_isoformat() -> None:
+def test_get_date_in_datetime_isoformat() -> None:
     """"""
-    assert get_date_in_isoformat("2026-07-02") == "2026-07-02T00:00:00"
+    assert get_date_in_datetime_isoformat("2026-07-02") == "2026-07-02T00:00:00"
 
     with raises(ValueError):
-        get_date_in_isoformat("2026/07/02")
+        get_date_in_datetime_isoformat("2026/07/02")
 
     with raises(ValueError):
-        get_date_in_isoformat("02-07-2026")
+        get_date_in_datetime_isoformat("02-07-2026")
 
     with raises(TypeError):
-        get_date_in_isoformat(2026) # type: ignore
+        get_date_in_datetime_isoformat(2026) # type: ignore
