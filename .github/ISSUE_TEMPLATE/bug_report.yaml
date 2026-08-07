@@ -1,0 +1,62 @@
+name: Bug Report
+description: File a PyPSA-Earth GUI bug report.
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug in PyPSA-Earth GUI!
+
+        Please do not submmit usage questions here. Use the repo's discussion section for that.
+
+        Please write the report content yourself, do not submmit AI generated content.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please mention what happened and the expected behaviour.
+      placeholder: The application ...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest set of steps that reproduces the problem.
+      placeholder: |
+        1. Start the Python environment.
+        2. Navigate to ...
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Other
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output.
+      render: shell
+    validations:
+      required: false
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Upload screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
