@@ -17,7 +17,7 @@ import streamlit as st
 from app.config.parameters import Parameter
 from app.config.callback import save_on_change
 from app.helpers.data import load_data
-from app.helpers.datetime import get_date_in_isoformat
+from app.helpers.datetime import get_date_in_datetime_isoformat
 from app.helpers.logging import get_logger_named
 from app.helpers.math import convert_scientific_to_float
 
@@ -160,7 +160,7 @@ def display_widget_for(parameter: Parameter) -> None:
                 case WidgetType.DATE_INPUT:
                     st.date_input(
                         label=f"{parameter.label}:",
-                        value=get_date_in_isoformat(parameter.value),
+                        value=get_date_in_datetime_isoformat(parameter.value),
                         key=parameter.unique_id,
                         disabled=disabled,
                         help=helper,

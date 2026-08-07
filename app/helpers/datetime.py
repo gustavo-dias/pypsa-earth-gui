@@ -2,14 +2,14 @@
 
 Functions
 ---------
-get_date_in_isoformat(date: str) -> str
+get_date_in_datetime_isoformat(date: str) -> str
 """
 
 from datetime import datetime
 
 
-def get_date_in_isoformat(date: str) -> str:
-    """Get date in isoformat.
+def get_date_in_datetime_isoformat(date: str) -> str:
+    """Get date in datetime isoformat.
     
     It is expected date to be in the following ISO 8601 pattern: YYYY-MM-DD.
 
