@@ -5,6 +5,7 @@ import pytest
 from random import randint
 from pandas import read_csv
 from pathlib import Path
+from pytest_mock import MockerFixture
 
 from app.config.parameters import Parameter
 
@@ -112,3 +113,11 @@ def parameter_widget_metadata() -> dict:
         'visible': True,
         'disabled': False,
     }
+
+@pytest.fixture
+def snakemake_file(mocker: MockerFixture) -> None:
+    """Fixture: mock a snakemake file with solve rules."""
+    snakemake_file_data = mocker.mock_open( # type: ignore
+        read_data="rule solve_all:\nrule solve_some:\nrule _solve_all:"
+    )
+    mocker.patch("builtins.open", snakemake_file_data)
