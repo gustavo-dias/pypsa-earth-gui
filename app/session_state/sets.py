@@ -7,7 +7,8 @@ set_ui_config_metadata_in_ss() -> None \\
 set_config_data_in_ss(config_data: dict) -> None \\
 set_unsaved_changes_in_ss(value: bool = False) -> None \\
 set_save_button_disabled_in_ss(value: bool = True) -> None \\
-set_unsavedchanges_and_savebutton_in_ss() -> None
+set_unsavedchanges_and_savebutton_in_ss() -> None \\
+set_is_solving_in_ss(value: bool = True) -> None \\
 """
 
 import streamlit as st
@@ -24,6 +25,7 @@ from app.session_state.constants import _SS_FOLDER_PATH_KEY
 from app.session_state.constants import _SS_SAVE_BUTTON_DISABLED_KEY
 from app.session_state.constants import _SS_UI_CONFIG_METADATA_KEY
 from app.session_state.constants import _SS_UNSAVED_CHANGES_KEY
+from app.session_state.constants import SS_IS_SOLVING_KEY
 
 
 logger = get_logger_named(Path(__file__).stem)
@@ -139,3 +141,20 @@ def set_unsavedchanges_and_savebutton_in_ss() -> None:
     """
     set_unsaved_changes_in_ss()
     set_save_button_disabled_in_ss()
+
+
+def set_is_solving_in_ss(value: bool = True) -> None:
+    """Set the is solving flag in the app's session state.
+    
+    Defaults to True (i.e. is solving).
+
+    Parameters
+    ----------
+    value: bool
+        The boolean value to be saved.
+    
+    Returns
+    -------
+    None
+    """
+    st.session_state[SS_IS_SOLVING_KEY] = value
