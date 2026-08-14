@@ -8,7 +8,7 @@ An unofficial graphical user interface (GUI) for [PyPSA-Earth](https://github.co
 2. Solve it and;
 3. Visualize the results.
 
-**Development status: currently only step 1 is supported (as of 2026-07-05).**
+**Development status: currently only steps 1 and 2 are supported (as of 2026-08-14).**
 
 ## Installation
 
