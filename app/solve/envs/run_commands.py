@@ -47,7 +47,6 @@ def get_environment_run_command(
         manager is detected or there is an error retrieving the available
         existing environments.
     """
-    st.subheader("Python Environment", divider='blue')
     python_env_managers: list[str] = getter_env_mngrs(EnvManager.to_list())
 
     if len(python_env_managers) == 0:

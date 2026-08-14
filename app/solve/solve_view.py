@@ -44,6 +44,7 @@ def display_solve_view(folder_path: Path) -> None:
     -------
     None
     """
+    st.subheader("Python Environment", divider='blue')
     env_cmd = get_environment_run_command(
         folder_path,
         get_installed_python_env_managers,
@@ -52,6 +53,7 @@ def display_solve_view(folder_path: Path) -> None:
     if env_cmd is None:
         return None
 
+    st.subheader("Snakemake", divider='blue')
     snakemake_cmd = get_snakemake_command(folder_path, get_snakemake_rules)
    
     st.subheader("Execution", divider='blue')

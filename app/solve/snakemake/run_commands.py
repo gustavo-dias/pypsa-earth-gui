@@ -39,8 +39,6 @@ def get_snakemake_command(
     str
         A valid executable snakemake command.
     """
-    st.subheader("Snakemake", divider='blue')
-
     col_1, col_2, col_3, col_4 = st.columns((0.15,0.15,0.35,0.35))
     dry_run: bool = col_1.checkbox("Dry run?")
     cores: float = col_2.number_input(
