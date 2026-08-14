@@ -6,7 +6,8 @@ get_folder_path_from_ss() -> Path | None \\
 get_save_button_disabled_from_ss() -> bool \\
 get_ui_config_metadata_from_ss() -> dict \\
 get_config_data_from_ss() -> dict \\
-get_unsaved_changes_from_ss() -> bool
+get_unsaved_changes_from_ss() -> bool \\
+get_is_solving_from_ss() -> bool \\
 """
 
 import streamlit as st
@@ -18,6 +19,7 @@ from app.session_state.constants import _SS_FOLDER_PATH_KEY
 from app.session_state.constants import _SS_SAVE_BUTTON_DISABLED_KEY
 from app.session_state.constants import _SS_UI_CONFIG_METADATA_KEY
 from app.session_state.constants import _SS_UNSAVED_CHANGES_KEY
+from app.session_state.constants import SS_IS_SOLVING_KEY
 
 
 def get_folder_path_from_ss() -> Path | None:
@@ -94,3 +96,17 @@ def get_unsaved_changes_from_ss() -> bool:
         Whether or not there are unsaved changes in the configuration.
     """
     return st.session_state.get(_SS_UNSAVED_CHANGES_KEY, False)
+
+
+def get_is_solving_from_ss() -> bool:
+    """Get the is running flag from the app's session state.
+
+    Return False (i.e. is not solving) by default in case the flag has not
+    been set before invoking this function.
+
+    Returns
+    -------
+    bool
+        Whether or not PyPSA-Earth is solving a model. i.e., is running.
+    """
+    return st.session_state.get(SS_IS_SOLVING_KEY, False)

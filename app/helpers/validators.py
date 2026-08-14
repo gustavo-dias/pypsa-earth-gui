@@ -38,3 +38,25 @@ def is_pypsa_earth_folder_path(folder_path: Path) -> bool:
     else:
         return False
 
+
+def is_there_a_config_yaml_in(folder_path: Path) -> bool:
+    """Check if there is a ConfigFiles.CONFIG file in folder_path.
+    
+    Parameters
+    ----------
+    folder_path: Path
+        The folder path to test whether or not there is a ConfigFiles.CONFIG.
+    
+    Returns
+    -------
+    bool: 
+        True if there exists, False otherwise.
+    """
+    files: list[str] = get_files_of_type_in(
+        CONFIG_FILES_EXTENSION,
+        folder_path,
+    )
+    if ConfigFiles.CONFIG in files:
+        return True
+    else:
+        return False
