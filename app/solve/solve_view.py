@@ -26,7 +26,7 @@ from app.solve.envs.python_envs import get_available_python_envs
 from app.solve.process.execution import get_subprocess_for
 from app.solve.process.termination import kill_process
 from app.solve.snakemake.rules import get_snakemake_rules
-from app.solve.snakemake.run_commands import get_snakemake_command
+from app.solve.snakemake.commands import get_snakemake_command
 
 
 @st.fragment()

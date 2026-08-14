@@ -3,7 +3,7 @@
 from pathlib import Path
 from pytest_mock import MockerFixture
 
-from app.solve.snakemake.run_commands import get_snakemake_command
+from app.solve.snakemake.commands import get_snakemake_command
 from app.solve.snakemake.rules import get_snakemake_rules
 
 
