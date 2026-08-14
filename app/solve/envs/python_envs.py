@@ -10,7 +10,7 @@ get_available_python_envs(python_env_mngr: str) -> list[str] | None \\
 from json import loads
 from subprocess import run
 
-from app.solve.env_managers import EnvManager
+from app.solve.envs.env_managers import EnvManager
 
 
 def get_available_python_envs(python_env_mngr: str) -> list[str] | None:

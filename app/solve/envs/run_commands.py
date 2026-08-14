@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Callable
 
 from app.helpers.ui.messages import display_as_error
-from app.solve.env_managers import EnvManager
+from app.solve.envs.env_managers import EnvManager
 
 
 def get_environment_run_command(

@@ -4,8 +4,8 @@ from typing import Generator
 
 from pytest_subprocess.fixtures import FakeProcess, fp
 
-from app.solve.env_managers import EnvManager
-from app.solve.env_managers import get_installed_python_env_managers
+from app.solve.envs.env_managers import EnvManager
+from app.solve.envs.env_managers import get_installed_python_env_managers
 
 
 def test_env_managers() -> None:
