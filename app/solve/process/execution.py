@@ -9,7 +9,7 @@ get_subprocess_for(command: str) -> Popen[str] | None \\
 """
 
 from shlex import split
-from subprocess import PIPE, Popen
+from subprocess import PIPE, STDOUT, Popen
 
 from app.helpers.ui.messages import display_as_error
 from app.session_state.sets import set_is_solving_in_ss
@@ -38,7 +38,7 @@ def get_subprocess_for(command: str) -> Popen[str] | None:
         return Popen(
             split(command),
             stdout=PIPE,
-            stderr=PIPE,
+            stderr=STDOUT,
             text=True,
             start_new_session=True, # to kill all (sub)processes as a group
         )
