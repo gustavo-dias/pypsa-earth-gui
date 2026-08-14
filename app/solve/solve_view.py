@@ -20,7 +20,7 @@ from app.solve.process.monitoring import is_timed_out, monitor_process
 from app.solve.process.commands import get_solve_command
 from app.solve.constants import MSG_CREATE_CONFIG_FIRST
 from app.solve.constants import MSG_SELECT_FOLDER_FIRST
-from app.solve.envs.run_commands import get_environment_run_command
+from app.solve.envs.commands import get_environment_run_command
 from app.solve.envs.managers import get_installed_python_env_managers
 from app.solve.envs.python_envs import get_available_python_envs
 from app.solve.process.execution import get_subprocess_for

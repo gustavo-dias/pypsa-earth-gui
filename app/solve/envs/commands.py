@@ -4,9 +4,9 @@
 Functions
 ---------
 get_environment_run_command(
-        pypsa_earth_folder_path: Path,
-        getter_env_mngrs: Callable[[list[str]], list[str]],
-        getter_envs: Callable[[str], list[str] | None],
+    pypsa_earth_folder_path: Path,
+    getter_env_mngrs: Callable[[list[str]], list[str]],
+    getter_envs: Callable[[str], list[str] | None],
 ) -> str | None
 """
 
