@@ -5,9 +5,9 @@ from json import dumps
 from typing import Generator
 from pytest_subprocess.fixtures import fp, FakeProcess
 
-from app.solve.envs.env_managers import EnvManager
+from app.solve.envs.managers import EnvManager
 from app.solve.envs.run_commands import get_environment_run_command
-from app.solve.envs.env_managers import get_installed_python_env_managers
+from app.solve.envs.managers import get_installed_python_env_managers
 from app.solve.envs.python_envs import get_available_python_envs
 
 
