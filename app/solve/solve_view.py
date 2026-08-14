@@ -24,7 +24,7 @@ from app.solve.envs.run_commands import get_environment_run_command
 from app.solve.env_managers import get_installed_python_env_managers
 from app.solve.envs.python_envs import get_available_python_envs
 from app.solve.process.execution import get_subprocess_for
-from app.solve.process.termination import kill_solve_process
+from app.solve.process.termination import kill_process
 from app.solve.snakemake.rules import get_snakemake_rules
 from app.solve.snakemake.run_commands import get_snakemake_command
 
@@ -85,7 +85,7 @@ def display_solve_view(folder_path: Path) -> None:
                 selected_timeout,
                 start_time,
                 is_timed_out,
-                kill_solve_process,
+                kill_process,
             )
             if timed_out:
                 col_3.warning(

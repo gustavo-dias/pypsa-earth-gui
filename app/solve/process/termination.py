@@ -4,7 +4,7 @@ This module provides a function to terminate PyPSA-Earth solve processes.
 
 Functions
 ---------
-kill_solve_process(process: Popen[str]) -> bool
+kill_process(process: Popen[str]) -> bool
 """
 
 from signal import SIGTERM
@@ -12,7 +12,7 @@ from os import getpgid, killpg
 from subprocess import Popen
 
 
-def kill_solve_process(process: Popen[str]) -> bool:
+def kill_process(process: Popen[str]) -> bool:
     """Terminate process.
 
     The process is terminated as a process group using os.killpg().
