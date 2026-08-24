@@ -5,18 +5,19 @@ Functions
 display_widget_recursively(
     parameter: Parameter,
     visited_parameters: set[Parameter],
+    verifier_param_not_visited: Callable[[Parameter, set[Parameter]], bool],
+    getter_ui_widget_metadata_for: Callable[[Parameter], dict[str, Any]],
+    widget_renderer: Callable[[Parameter], None],
     ) -> None
 """
 
-from pathlib import Path
-
 import streamlit as st
 
-from app.config.form.widgets.metadata import get_widget_metadata_for
+from pathlib import Path
+from typing import Any, Callable
+
 from app.config.parameters import Parameter
-from app.config.navigation import parameter_was_not_visited
 from app.helpers.logging import get_logger_named
-from app.helpers.ui.widgets import display_widget_for
 
 
 logger = get_logger_named(Path(__file__).stem)
@@ -25,6 +26,9 @@ logger = get_logger_named(Path(__file__).stem)
 def display_widget_recursively(
         parameter: Parameter,
         visited_parameters: set[Parameter],
+        verifier_param_not_visited: Callable[[Parameter, set[Parameter]], bool],
+        getter_ui_widget_metadata_for: Callable[[Parameter], dict[str, Any]],
+        widget_renderer: Callable[[Parameter], None],
     ) -> None:
     """Display parameter's widget.
     
@@ -39,7 +43,13 @@ def display_widget_recursively(
     visited_parameters: set[Parameter]
         A set containing the visited parameters; used to avoid revisiting when
         backtracking.
-    
+    verifier_param_not_visited: Callable[[Parameter, set[Parameter]],bool],
+        The callable that will verify if the parameter has been visited or not.
+    getter_ui_widget_metadata_for: Callable[[Parameter], dict[str, Any]],
+        The callable that will retrieve the parameter's UI widget metadata.
+    widget_renderer: Callable[[Parameter], None],
+        The callable that will effectively render the parameter's widget.
+
     Returns
     -------
     None
@@ -62,14 +72,17 @@ def display_widget_recursively(
                         parameter.unique_id_prefix,
                         parameter.hierarchy,
                     )
-                    if parameter_was_not_visited(
+                    if verifier_param_not_visited(
                         child_parameter,
                         visited_parameters
                     ):
                         display_widget_recursively(
                             child_parameter,
                             visited_parameters,
+                            verifier_param_not_visited,
+                            getter_ui_widget_metadata_for,
+                            widget_renderer,
                         )
     else:
-        parameter.widget_metadata = get_widget_metadata_for(parameter)
-        display_widget_for(parameter)
+        parameter.widget_metadata = getter_ui_widget_metadata_for(parameter)
+        widget_renderer(parameter)
