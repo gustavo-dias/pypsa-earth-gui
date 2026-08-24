@@ -17,6 +17,7 @@ from app.config.actions import get_available_configuration_actions
 from app.config.data.save import save_to_file
 from app.config.files import ConfigFiles, ConfigTemplateFiles
 from app.config.form.display import display_config_form_based_on
+from app.config.form.widgets.display import display_widget_recursively
 from app.helpers.logging import get_logger_named
 from app.helpers.ui.messages import display_as_error
 from app.helpers.exceptions import CriticalAppError
@@ -24,7 +25,6 @@ from app.session_state.gets import get_folder_path_from_ss
 from app.session_state.gets import get_save_button_disabled_from_ss
 from app.session_state.sets import set_unsavedchanges_and_savebutton_in_ss
 from app.session_state.sets import set_save_button_disabled_in_ss
-from app.session_state.sets import set_ui_config_metadata_in_ss
 from app.session_state.sets import set_unsaved_changes_in_ss
 
 
@@ -85,11 +85,10 @@ def main() -> None:
                     selected_config_file,
                 )
                 try:
-                    # calling set before every display attempt to update the ui
-                    # metadata in the app's session state should the ui config
-                    # metadata file be modified while streamlit is running
-                    set_ui_config_metadata_in_ss()
-                    if display_config_form_based_on(config_file_path):
+                    if display_config_form_based_on(
+                        config_file_path,
+                        display_widget_recursively,
+                    ):
                         if st.sidebar.button(
                             SAVE_BUTTON_LABEL,
                             width='stretch',
