@@ -20,11 +20,11 @@ from app.config.constants import UI_CONFIG_METADATA_FILE_NAME
 from app.constants import BASE_DIR
 from app.helpers.exceptions import CriticalAppError
 from app.helpers.logging import get_logger_named
-from app.session_state.constants import _SS_CONFIG_DATA_KEY
-from app.session_state.constants import _SS_FOLDER_PATH_KEY
-from app.session_state.constants import _SS_SAVE_BUTTON_DISABLED_KEY
-from app.session_state.constants import _SS_UI_CONFIG_METADATA_KEY
-from app.session_state.constants import _SS_UNSAVED_CHANGES_KEY
+from app.session_state.constants import SS_CONFIG_DATA_KEY
+from app.session_state.constants import SS_FOLDER_PATH_KEY
+from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
+from app.session_state.constants import SS_UI_CONFIG_METADATA_KEY
+from app.session_state.constants import SS_UNSAVED_CHANGES_KEY
 from app.session_state.constants import SS_IS_SOLVING_KEY
 
 
@@ -47,7 +47,7 @@ def set_folder_path_in_ss(folder_path: Path | None) -> None:
         value = Path(folder_path)
     else:
         value = folder_path
-    st.session_state[_SS_FOLDER_PATH_KEY] = value
+    st.session_state[SS_FOLDER_PATH_KEY] = value
 
 
 def set_ui_config_metadata_in_ss() -> None:
@@ -68,7 +68,7 @@ def set_ui_config_metadata_in_ss() -> None:
     try:
         with open(Path(BASE_DIR, UI_CONFIG_METADATA_FILE_NAME), 'r') as file:
             # full_load because of python specific tags
-            st.session_state[_SS_UI_CONFIG_METADATA_KEY] = full_load(file)
+            st.session_state[SS_UI_CONFIG_METADATA_KEY] = full_load(file)
     except Exception as exc:
         logger.error(exc)
         raise CriticalAppError(
@@ -90,7 +90,7 @@ def set_config_data_in_ss(config_data: dict) -> None:
     -------
     None
     """
-    st.session_state[_SS_CONFIG_DATA_KEY] = config_data
+    st.session_state[SS_CONFIG_DATA_KEY] = config_data
 
 
 def set_unsaved_changes_in_ss(value: bool = False) -> None:
@@ -108,7 +108,7 @@ def set_unsaved_changes_in_ss(value: bool = False) -> None:
     -------
     None
     """
-    st.session_state[_SS_UNSAVED_CHANGES_KEY] = value
+    st.session_state[SS_UNSAVED_CHANGES_KEY] = value
 
 
 def set_save_button_disabled_in_ss(value: bool = True) -> None:
@@ -125,7 +125,7 @@ def set_save_button_disabled_in_ss(value: bool = True) -> None:
     -------
     None
     """
-    st.session_state[_SS_SAVE_BUTTON_DISABLED_KEY] = value
+    st.session_state[SS_SAVE_BUTTON_DISABLED_KEY] = value
 
 
 def set_unsavedchanges_and_savebutton_in_ss() -> None:
