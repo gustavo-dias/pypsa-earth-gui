@@ -5,20 +5,20 @@ errors.
 
 Constants
 ---------
-_SS_FOLDER_PATH_KEY \\
-_SS_SAVE_BUTTON_DISABLED_KEY \\
-_SS_UI_CONFIG_METADATA_KEY \\
-_SS_CONFIG_DATA_KEY \\
-_SS_UNSAVED_CHANGES_KEY \\
+SS_FOLDER_PATH_KEY \\
+SS_SAVE_BUTTON_DISABLED_KEY \\
+SS_UI_CONFIG_METADATA_KEY \\
+SS_CONFIG_DATA_KEY \\
+SS_UNSAVED_CHANGES_KEY \\
 SS_IS_SOLVING \\
 """
 
 from typing import Literal
 
 
-_SS_FOLDER_PATH_KEY: str = "folder_path"
-_SS_SAVE_BUTTON_DISABLED_KEY: str = 'save_disabled'
-_SS_UI_CONFIG_METADATA_KEY: str = 'ui_config_metadata'
-_SS_CONFIG_DATA_KEY: str = 'config_data'
-_SS_UNSAVED_CHANGES_KEY: str = 'unsaved_changes'
+SS_FOLDER_PATH_KEY: Literal['folder_path'] = 'folder_path'
+SS_SAVE_BUTTON_DISABLED_KEY: Literal['save_disabled'] = 'save_disabled'
+SS_UI_CONFIG_METADATA_KEY: Literal['ui_config_metadata']= 'ui_config_metadata'
+SS_CONFIG_DATA_KEY: Literal['config_data'] = 'config_data'
+SS_UNSAVED_CHANGES_KEY: Literal['unsaved_changes'] = 'unsaved_changes'
 SS_IS_SOLVING_KEY: Literal['is_solving'] = 'is_solving'

@@ -14,11 +14,11 @@ import streamlit as st
 
 from pathlib import Path
 
-from app.session_state.constants import _SS_CONFIG_DATA_KEY
-from app.session_state.constants import _SS_FOLDER_PATH_KEY
-from app.session_state.constants import _SS_SAVE_BUTTON_DISABLED_KEY
-from app.session_state.constants import _SS_UI_CONFIG_METADATA_KEY
-from app.session_state.constants import _SS_UNSAVED_CHANGES_KEY
+from app.session_state.constants import SS_CONFIG_DATA_KEY
+from app.session_state.constants import SS_FOLDER_PATH_KEY
+from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
+from app.session_state.constants import SS_UI_CONFIG_METADATA_KEY
+from app.session_state.constants import SS_UNSAVED_CHANGES_KEY
 from app.session_state.constants import SS_IS_SOLVING_KEY
 
 
@@ -36,7 +36,7 @@ def get_folder_path_from_ss() -> Path | None:
     None
         No folder path saved in the app's session state.
     """
-    return st.session_state.get(_SS_FOLDER_PATH_KEY, None)
+    return st.session_state.get(SS_FOLDER_PATH_KEY, None)
 
 
 def get_save_button_disabled_from_ss() -> bool:
@@ -51,7 +51,7 @@ def get_save_button_disabled_from_ss() -> bool:
     bool
         Whether or not the save configuration button is disabled.
     """
-    return st.session_state.get(_SS_SAVE_BUTTON_DISABLED_KEY, True)
+    return st.session_state.get(SS_SAVE_BUTTON_DISABLED_KEY, True)
 
 
 def get_ui_config_metadata_from_ss() -> dict:
@@ -68,7 +68,7 @@ def get_ui_config_metadata_from_ss() -> dict:
         If the ui config metadata has not been saved to the session state
         before invoking this function.
     """
-    return st.session_state[_SS_UI_CONFIG_METADATA_KEY]
+    return st.session_state[SS_UI_CONFIG_METADATA_KEY]
 
 
 def get_config_data_from_ss() -> dict:
@@ -80,7 +80,7 @@ def get_config_data_from_ss() -> dict:
         If the config data has not been saved to the session state before
         invoking this function.
     """
-    return st.session_state[_SS_CONFIG_DATA_KEY]
+    return st.session_state[SS_CONFIG_DATA_KEY]
 
 
 def get_unsaved_changes_from_ss() -> bool:
@@ -95,7 +95,7 @@ def get_unsaved_changes_from_ss() -> bool:
     bool
         Whether or not there are unsaved changes in the configuration.
     """
-    return st.session_state.get(_SS_UNSAVED_CHANGES_KEY, False)
+    return st.session_state.get(SS_UNSAVED_CHANGES_KEY, False)
 
 
 def get_is_solving_from_ss() -> bool:
