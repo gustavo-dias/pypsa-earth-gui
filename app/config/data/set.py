@@ -6,8 +6,8 @@ set_config_data(config_data: dict, parameter: Parameter) -> None:
 """
 
 from app.config.parameters import Parameter
-from app.session_state.sets import set_save_button_disabled_in_ss
-from app.session_state.sets import set_unsaved_changes_in_ss
+from app.session_state.setters import set_save_button_disabled_in_ss
+from app.session_state.setters import set_unsaved_changes_in_ss
 
 
 def set_config_data(config_data: dict, parameter: Parameter) -> None:

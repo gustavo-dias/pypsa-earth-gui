@@ -12,7 +12,7 @@ from shlex import split
 from subprocess import PIPE, STDOUT, Popen
 
 from app.helpers.ui.messages import display_as_error
-from app.session_state.sets import set_is_solving_in_ss
+from app.session_state.setters import set_is_solving_in_ss
 
 
 def get_subprocess_for(command: str) -> Popen[str] | None:

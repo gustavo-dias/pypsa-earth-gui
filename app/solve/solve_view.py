@@ -15,7 +15,7 @@ from app.helpers.ui.messages import display_as_warning
 from app.helpers.validators import is_there_a_config_yaml_in
 from app.session_state.getters import get_folder_path_from_ss
 from app.session_state.getters import get_is_solving_from_ss
-from app.session_state.sets import set_is_solving_in_ss
+from app.session_state.setters import set_is_solving_in_ss
 from app.solve.process.monitoring import is_timed_out, monitor_process
 from app.solve.process.commands import get_solve_command
 from app.solve.constants import MSG_CREATE_CONFIG_FIRST

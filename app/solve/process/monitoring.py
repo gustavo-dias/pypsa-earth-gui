@@ -20,7 +20,7 @@ from subprocess import Popen
 from typing import Callable, Literal
 
 from app.helpers.ui.messages import display_as_error
-from app.session_state.sets import set_is_solving_in_ss
+from app.session_state.setters import set_is_solving_in_ss
 
 
 MINUTES_TO_SECONDS: Literal[60] = 60
