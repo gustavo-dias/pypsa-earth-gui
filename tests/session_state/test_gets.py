@@ -1,11 +1,16 @@
 """Tests for the module gets.py"""
 
+from pytest import raises
+
 from app.session_state.constants import SS_IS_SOLVING_KEY
 from app.session_state.gets import get_is_solving_from_ss
 from app.session_state.constants import SS_FOLDER_PATH_KEY
 from app.session_state.gets import get_folder_path_from_ss
 from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
 from app.session_state.gets import get_save_button_disabled_from_ss
+from app.session_state.constants import SS_CONFIG_DATA_KEY
+from app.session_state.gets import get_config_data_from_ss
+
 
 def test_get_folder_path_from_ss() -> None:
     """"""
@@ -37,6 +42,22 @@ def test_get_save_button_disabled_from_ss() -> None:
     assert not get_save_button_disabled_from_ss(), 'False failed'
 
     del st.session_state[SS_SAVE_BUTTON_DISABLED_KEY]
+
+
+def test_get_config_data_from_ss() -> None:
+    """"""
+    import streamlit as st
+
+    # config not loaded into session state
+    with raises(KeyError):
+        get_config_data_from_ss()
+
+    # loaded into session state
+    st.session_state[SS_CONFIG_DATA_KEY] = {'tutorial': True}
+
+    assert get_config_data_from_ss() == {'tutorial': True}, 'True failed'
+
+    del st.session_state[SS_CONFIG_DATA_KEY]
 
 
 def test_get_is_solving_from_ss() -> None:
