@@ -1,17 +1,17 @@
-"""Tests for the module gets.py"""
+"""Tests for the module getters.py"""
 
 from pytest import raises
 
 from app.session_state.constants import SS_IS_SOLVING_KEY
-from app.session_state.gets import get_is_solving_from_ss
+from app.session_state.getters import get_is_solving_from_ss
 from app.session_state.constants import SS_FOLDER_PATH_KEY
-from app.session_state.gets import get_folder_path_from_ss
+from app.session_state.getters import get_folder_path_from_ss
 from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
-from app.session_state.gets import get_save_button_disabled_from_ss
+from app.session_state.getters import get_save_button_disabled_from_ss
 from app.session_state.constants import SS_CONFIG_DATA_KEY
-from app.session_state.gets import get_config_data_from_ss
+from app.session_state.getters import get_config_data_from_ss
 from app.session_state.constants import SS_UNSAVED_CHANGES_KEY
-from app.session_state.gets import get_unsaved_changes_from_ss
+from app.session_state.getters import get_unsaved_changes_from_ss
 
 
 def test_get_folder_path_from_ss() -> None:

@@ -28,7 +28,7 @@ from app.config.parameters import Parameter
 from app.helpers.exceptions import CriticalAppError
 from app.helpers.logging import get_logger_named
 from app.helpers.ui.widgets import display_widget_for
-from app.session_state.gets import get_unsaved_changes_from_ss
+from app.session_state.getters import get_unsaved_changes_from_ss
 from app.session_state.sets import set_config_data_in_ss
 
 

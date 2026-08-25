@@ -9,7 +9,7 @@ import streamlit as st
 
 from app.config.data.set import set_config_data
 from app.config.parameters import Parameter
-from app.session_state.gets import get_config_data_from_ss
+from app.session_state.getters import get_config_data_from_ss
 
 
 def save_on_change(widget_key: str) -> None:
