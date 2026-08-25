@@ -10,6 +10,8 @@ from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
 from app.session_state.gets import get_save_button_disabled_from_ss
 from app.session_state.constants import SS_CONFIG_DATA_KEY
 from app.session_state.gets import get_config_data_from_ss
+from app.session_state.constants import SS_UNSAVED_CHANGES_KEY
+from app.session_state.gets import get_unsaved_changes_from_ss
 
 
 def test_get_folder_path_from_ss() -> None:
@@ -58,6 +60,22 @@ def test_get_config_data_from_ss() -> None:
     assert get_config_data_from_ss() == {'tutorial': True}, 'True failed'
 
     del st.session_state[SS_CONFIG_DATA_KEY]
+
+
+def test_get_unsaved_changes_from_ss() -> None:
+    """"""
+    import streamlit as st
+
+    # again the delete statement; TODO: investigate
+    del st.session_state[SS_UNSAVED_CHANGES_KEY]
+
+    assert get_unsaved_changes_from_ss() == False, 'Default (False) failed'
+
+    st.session_state[SS_UNSAVED_CHANGES_KEY] = True
+
+    assert get_unsaved_changes_from_ss() == True, 'True failed'
+
+    del st.session_state[SS_UNSAVED_CHANGES_KEY]
 
 
 def test_get_is_solving_from_ss() -> None:

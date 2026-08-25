@@ -8,6 +8,8 @@ from app.session_state.constants import SS_SAVE_BUTTON_DISABLED_KEY
 from app.session_state.sets import set_save_button_disabled_in_ss
 from app.session_state.constants import SS_CONFIG_DATA_KEY
 from app.session_state.sets import set_config_data_in_ss
+from app.session_state.constants import SS_UNSAVED_CHANGES_KEY
+from app.session_state.sets import set_unsaved_changes_in_ss
 
 
 def test_set_folder_path_in_ss() -> None:
@@ -49,6 +51,23 @@ def test_set_config_data_in_ss() -> None:
     assert st.session_state[SS_CONFIG_DATA_KEY] == {'tutorial': True}, 'Success'
 
     del st.session_state[SS_CONFIG_DATA_KEY]
+
+
+def test_set_unsaved_changes_in_ss() -> None:
+    """"""
+    import streamlit as st
+
+    result = set_unsaved_changes_in_ss()
+
+    assert result is None, 'Return None'
+
+    assert st.session_state[SS_UNSAVED_CHANGES_KEY] == \
+        False, 'Default (False) failed'
+
+    set_unsaved_changes_in_ss(True)
+    assert st.session_state[SS_UNSAVED_CHANGES_KEY] == True, 'True failed'
+
+    del st.session_state[SS_UNSAVED_CHANGES_KEY]
 
 
 def test_set_is_solving_in_ss() -> None:
