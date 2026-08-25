@@ -8,7 +8,7 @@ save_to_file(config_file_path: Path) -> None
 from yaml import dump
 from pathlib import Path
 
-from app.session_state.gets import get_config_data_from_ss
+from app.session_state.getters import get_config_data_from_ss
 
 
 def save_to_file(config_file_path: Path) -> None:

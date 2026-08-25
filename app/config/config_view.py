@@ -21,11 +21,11 @@ from app.config.form.widgets.display import display_widget_recursively
 from app.helpers.logging import get_logger_named
 from app.helpers.ui.messages import display_as_error
 from app.helpers.exceptions import CriticalAppError
-from app.session_state.gets import get_folder_path_from_ss
-from app.session_state.gets import get_save_button_disabled_from_ss
-from app.session_state.sets import set_unsavedchanges_and_savebutton_in_ss
-from app.session_state.sets import set_save_button_disabled_in_ss
-from app.session_state.sets import set_unsaved_changes_in_ss
+from app.session_state.getters import get_folder_path_from_ss
+from app.session_state.getters import get_save_button_disabled_from_ss
+from app.session_state.setters import set_unsavedchanges_and_savebutton_in_ss
+from app.session_state.setters import set_save_button_disabled_in_ss
+from app.session_state.setters import set_unsaved_changes_in_ss
 
 
 logger = get_logger_named(Path(__file__).stem)

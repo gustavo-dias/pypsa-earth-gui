@@ -28,8 +28,8 @@ from app.helpers.ui.messages import display_as_error
 from app.constants import ERROR_MSG, HEADER_DIVIDER, FOLDER_BUTTON_LABEL
 from app.constants import LOGO_LINK_URL, LOGO_PATH, LOGO_SIZE
 from app.constants import FOLDER_PROMPT_TITLE, WORKING_DIR
-from app.session_state.gets import get_folder_path_from_ss
-from app.session_state.sets import set_folder_path_in_ss
+from app.session_state.getters import get_folder_path_from_ss
+from app.session_state.setters import set_folder_path_in_ss
 
 
 def main() -> None:
