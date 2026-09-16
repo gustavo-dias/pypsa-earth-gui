@@ -1,9 +1,9 @@
-"""App's solve view entry.
+"""App's run view entry.
 
 Functions
 ---------
 main() -> None \\
-display_solve_view(folder_path: Path) -> None \\
+display_run_view(folder_path: Path) -> None \\
 """
 
 import streamlit as st
@@ -30,8 +30,8 @@ from app.run.snakemake.commands import get_snakemake_command
 
 
 @st.fragment()
-def display_solve_view(folder_path: Path) -> None:
-    """Display the solve view.
+def display_run_view(folder_path: Path) -> None:
+    """Display the run view.
     
     This is a streamlit fragment.
 
@@ -100,7 +100,7 @@ def display_solve_view(folder_path: Path) -> None:
 
 
 def main() -> None:
-    """Entry point for the solve view.
+    """Entry point for the run view.
     
     Returns
     -------
@@ -112,7 +112,7 @@ def main() -> None:
     elif not is_there_a_config_yaml_in(pypsa_earth_folder_path):
         display_as_warning(MSG_CREATE_CONFIG_FIRST)
     else:
-        display_solve_view(pypsa_earth_folder_path)
+        display_run_view(pypsa_earth_folder_path)
 
 
 if __name__ == '__main__':
