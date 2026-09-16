@@ -24,14 +24,14 @@ def get_snakemake_command(
     ) -> str:
     """Get a valid PyPSA-Earth snakemake command.
     
-    Format: 'snakemake -j {cores} [-n] [other_args] solve_rule'.
+    Format: 'snakemake -j {cores} [-n] [other_args] rule'.
 
     Parameters
     ----------
     folder_path: Path,
         The path to PyPSA-Earth's local installation.
     getter_snakemake_rules: Callable[[Path], list[str]],
-        A callable to retrieve the snakemake solve rules from PyPSA-Earth's
+        A callable to retrieve the snakemake rules from PyPSA-Earth's
         snakemake file.
 
     Returns
@@ -53,7 +53,7 @@ def get_snakemake_command(
         help='E.g.: ""',
     )
     selected_rule: str | None = col_4.selectbox(
-        "PyPSA-Earth solve command:",
+        "PyPSA-Earth rules:",
         options=getter_snakemake_rules(folder_path),
     )
 
