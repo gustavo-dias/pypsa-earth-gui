@@ -2,7 +2,7 @@
 
 from subprocess import Popen
 
-from app.solve.process.execution import get_subprocess_for
+from app.run.process.execution import get_subprocess_for
 
 def test_get_subprocess_for() -> None:
     """"""

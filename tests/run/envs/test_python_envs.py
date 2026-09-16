@@ -4,8 +4,8 @@ from json import dumps
 from typing import Generator
 from pytest_subprocess.fixtures import FakeProcess, fp
 
-from app.solve.envs.managers import EnvManager
-from app.solve.envs.python_envs import get_available_python_envs
+from app.run.envs.managers import EnvManager
+from app.run.envs.python_envs import get_available_python_envs
 
 
 def test_get_available_python_envs(

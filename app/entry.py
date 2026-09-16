@@ -56,7 +56,7 @@ def main() -> None:
                 title="CONFIG",
             ),
             st.Page(
-                Path(Path(__file__).parent, 'solve', 'solve_view.py'),
+                Path(Path(__file__).parent, 'run', 'solve_view.py'),
                 title="SOLVE",
             ),
             st.Page(
