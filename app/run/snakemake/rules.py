@@ -5,14 +5,14 @@ snakemake file.
 
 Functions
 ---------
-get_snakemake_rules(pypsa_earth_folder_path: Path) -> list[str]
+get_snakemake_solve_rules(pypsa_earth_folder_path: Path) -> list[str]
 """
 
 from re import compile
 from pathlib import Path
 
 
-def get_snakemake_rules(pypsa_earth_folder_path: Path) -> list[str]:
+def get_snakemake_solve_rules(pypsa_earth_folder_path: Path) -> list[str]:
     """Get the snakemake solve rules in pypsa_earth_folder_path.
     
     The function searchs solve rules in PyPSA-Earth's snakemake file using the
