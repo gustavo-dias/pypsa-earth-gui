@@ -17,6 +17,11 @@ from os import cpu_count
 from pathlib import Path
 from typing import Callable
 
+from app.run.constants import CORES_INPUT_HELPER, CORES_INPUT_LABEL
+from app.run.constants import DRYRUN_CHECKBOX_LABEL, COMMAND_INPUT_LABEL
+from app.run.constants import EXTRA_ARGS_HELPER, EXTRA_ARGS_LABEL
+from app.run.constants import RULES_SELECTBOX_HELPER, RULES_SELECTBOX_LABEL
+
 
 def get_snakemake_run_command(
         folder_path: Path,
@@ -40,23 +45,23 @@ def get_snakemake_run_command(
         A valid executable snakemake command.
     """
     col_1, col_2, col_3, col_4 = st.columns((0.15,0.15,0.35,0.35))
-    dry_run: bool = col_1.checkbox("Dry run?")
+    dry_run: bool = col_1.checkbox(DRYRUN_CHECKBOX_LABEL)
     cores: float = col_2.number_input(
-        "Number of cores:",
+        CORES_INPUT_LABEL,
         min_value=1,
         max_value=cpu_count(),
         step=1,
-        help="Range: [1, local CPU count]",
+        help=CORES_INPUT_HELPER,
     )
     extra_commands: str = col_3.text_input(
-        "Extra arguments:",
-        help='E.g.: ""',
+        EXTRA_ARGS_LABEL,
+        help=EXTRA_ARGS_HELPER,
     )
     selected_rule: str | None = col_4.selectbox(
-        "PyPSA-Earth rules:",
+        RULES_SELECTBOX_LABEL,
         options=getter_snakemake_rules(folder_path),
         accept_new_options=True,
-        help="Choose (or add) a rule.",
+        help=RULES_SELECTBOX_HELPER,
     )
 
     cmd: str = f"snakemake -j {cores} "
@@ -66,4 +71,4 @@ def get_snakemake_run_command(
         cmd = cmd + extra_commands.strip() + " "
     cmd = cmd + selected_rule 
 
-    return st.text_input("Command:", value=cmd, disabled=True)
+    return st.text_input(COMMAND_INPUT_LABEL, value=cmd, disabled=True)

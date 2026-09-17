@@ -18,8 +18,11 @@ from app.session_state.getters import get_is_solving_from_ss
 from app.session_state.setters import set_is_solving_in_ss
 from app.run.process.monitoring import is_timed_out, monitor_process
 from app.run.process.commands import get_solve_command
-from app.run.constants import MSG_CREATE_CONFIG_FIRST
-from app.run.constants import MSG_SELECT_FOLDER_FIRST
+from app.run.constants import RUN_DIVIDER_COLOR, EXECUTION_SUBHEADER_LABEL
+from app.run.constants import MSG_CREATE_CONFIG_FIRST, TIMEOUT_INPUT_HELPER
+from app.run.constants import PYTHON_ENVS_SUBHEADER_LABEL, RUN_BUTTON_ICON
+from app.run.constants import SNAKEMAKE_SUBHEADER_LABEL, RUN_BUTTON_LABEL
+from app.run.constants import MSG_SELECT_FOLDER_FIRST, TIMEOUT_INPUT_LABEL
 from app.run.envs.commands import get_environment_run_command
 from app.run.envs.managers import get_installed_python_env_managers
 from app.run.envs.python_envs import get_available_python_envs
@@ -44,7 +47,7 @@ def display_run_view(folder_path: Path) -> None:
     -------
     None
     """
-    st.subheader("Python Environment", divider='blue')
+    st.subheader(PYTHON_ENVS_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     env_cmd = get_environment_run_command(
         folder_path,
         get_installed_python_env_managers,
@@ -53,29 +56,29 @@ def display_run_view(folder_path: Path) -> None:
     if env_cmd is None:
         return None
 
-    st.subheader("Snakemake", divider='blue')
+    st.subheader(SNAKEMAKE_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     snakemake_cmd = get_snakemake_run_command(
         folder_path,
         get_snakemake_solve_rules,
     )
    
-    st.subheader("Execution", divider='blue')
+    st.subheader(EXECUTION_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     col_1, col_2, col_3 = st.columns(
         (0.2, 0.2, 0.2),
         vertical_alignment='bottom',
         gap='large',
     )
     selected_timeout = col_1.number_input(
-        "Timeout (m):",
+        TIMEOUT_INPUT_LABEL,
         min_value=0,
         value=60,
         step=1,
-        help="In minutes. Set to 0 for no timeout (not recommended)."
+        help=TIMEOUT_INPUT_HELPER,
     )
     if col_2.button(
-        "Run",
+        RUN_BUTTON_LABEL,
         use_container_width=True,
-        icon=":material/play_circle:",
+        icon=RUN_BUTTON_ICON,
         disabled=get_is_solving_from_ss(),
         on_click=set_is_solving_in_ss,
     ):

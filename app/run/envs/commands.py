@@ -16,6 +16,8 @@ from pathlib import Path
 from typing import Callable
 
 from app.helpers.ui.messages import display_as_error
+from app.run.constants import ENV_SELECTBOX_LABEL, MNGR_SELECTBOX_LABEL
+from app.run.constants import MSG_NO_ENV_MNGR_INSTALLED
 from app.run.envs.managers import EnvManager
 
 
@@ -50,21 +52,18 @@ def get_environment_run_command(
     python_env_managers: list[str] = getter_env_mngrs(EnvManager.to_list())
 
     if len(python_env_managers) == 0:
-        display_as_error(
-            "No Python environment manager installed. Check your PyPSA-Earth "
-            "installation."
-        )
+        display_as_error(MSG_NO_ENV_MNGR_INSTALLED)
         return None
     else:
         col_1, col_2 = st.columns((0.5, 0.5))
         selected_env_mngr: str = col_1.selectbox(
-            label="Manager:",
+            label=MNGR_SELECTBOX_LABEL,
             options=python_env_managers,
         )
         python_envs: list[str] | None = getter_envs(selected_env_mngr)
         if python_envs is not None:
             selected_env: str | None = col_2.selectbox( # type: ignore
-                label="PyPSA-Earth Environment:",
+                label=ENV_SELECTBOX_LABEL,
                 options=python_envs,
             )
             cmd = f"{selected_env_mngr} run -n {selected_env} "
