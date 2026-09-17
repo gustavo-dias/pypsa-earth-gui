@@ -11,11 +11,11 @@ get_snakemake_command(
 ) -> str:
 """
 
+import streamlit as st
+
 from os import cpu_count
 from pathlib import Path
 from typing import Callable
-
-import streamlit as st
 
 
 def get_snakemake_command(
