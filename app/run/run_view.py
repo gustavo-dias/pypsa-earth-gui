@@ -20,8 +20,8 @@ from app.run.process.monitoring import is_timed_out, monitor_process
 from app.run.process.commands import get_solve_command
 from app.run.constants import DIVIDER_COLOR, EXECUTION_SUBHEADER_LABEL
 from app.run.constants import MSG_CREATE_CONFIG_FIRST, TIMEOUT_HELPER
-from app.run.constants import PYTHON_ENVS_SUBHEADER_LABEL
-from app.run.constants import SNAKEMAKE_SUBHEADER_LABEL
+from app.run.constants import PYTHON_ENVS_SUBHEADER_LABEL, RUN_BUTTON_ICON
+from app.run.constants import SNAKEMAKE_SUBHEADER_LABEL, RUN_BUTTON_LABEL
 from app.run.constants import MSG_SELECT_FOLDER_FIRST, TIMEOUT_LABEL
 from app.run.envs.commands import get_environment_run_command
 from app.run.envs.managers import get_installed_python_env_managers
@@ -76,9 +76,9 @@ def display_run_view(folder_path: Path) -> None:
         help=TIMEOUT_HELPER,
     )
     if col_2.button(
-        "Run",
+        RUN_BUTTON_LABEL,
         use_container_width=True,
-        icon=":material/play_circle:",
+        icon=RUN_BUTTON_ICON,
         disabled=get_is_solving_from_ss(),
         on_click=set_is_solving_in_ss,
     ):

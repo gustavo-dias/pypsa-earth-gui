@@ -10,6 +10,8 @@ SNAKEMAKE_SUBHEADER_LABEL \\
 EXECUTION_SUBHEADER_LABEL \\
 TIMEOUT_LABEL \\
 TIMEOUT_HELPER \\
+RUN_BUTTON_LABEL \\
+RUN_BUTTON_ICON \\
 """
 
 from typing import Literal
@@ -24,4 +26,6 @@ PYTHON_ENVS_SUBHEADER_LABEL = "Python Environment"
 SNAKEMAKE_SUBHEADER_LABEL = "Snakemake"
 EXECUTION_SUBHEADER_LABEL = "Execution"
 TIMEOUT_LABEL = "Timeout (m):"
-TIMEOUT_HELPER = "In minutes. Set to 0 for no timeout (not recommended)." 
+TIMEOUT_HELPER = "In minutes. Set to 0 for no timeout (not recommended)."
+RUN_BUTTON_LABEL = "Run"
+RUN_BUTTON_ICON = ":material/play_circle:" 
