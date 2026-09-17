@@ -55,6 +55,8 @@ def get_snakemake_command(
     selected_rule: str | None = col_4.selectbox(
         "PyPSA-Earth rules:",
         options=getter_snakemake_rules(folder_path),
+        accept_new_options=True,
+        help="Choose (or add) a rule.",
     )
 
     cmd: str = f"snakemake -j {cores} "
