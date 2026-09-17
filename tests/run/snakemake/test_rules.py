@@ -3,8 +3,8 @@
 from pathlib import Path
 from pytest_mock import MockerFixture
 
-from app.solve.snakemake.rules import get_snakemake_rules
+from app.run.snakemake.rules import get_snakemake_solve_rules
 
 def test_get_snakemake_rules(snakemake_file: MockerFixture) -> None:
     """"""
-    assert get_snakemake_rules(Path("")) == ['solve_all', 'solve_some']
+    assert get_snakemake_solve_rules(Path("")) == ['solve_all', 'solve_some']

@@ -5,10 +5,10 @@ from json import dumps
 from typing import Generator
 from pytest_subprocess.fixtures import fp, FakeProcess
 
-from app.solve.envs.managers import EnvManager
-from app.solve.envs.commands import get_environment_run_command
-from app.solve.envs.managers import get_installed_python_env_managers
-from app.solve.envs.python_envs import get_available_python_envs
+from app.run.envs.managers import EnvManager
+from app.run.envs.commands import get_environment_run_command
+from app.run.envs.managers import get_installed_python_env_managers
+from app.run.envs.python_envs import get_available_python_envs
 
 
 def test_get_environment_run_command(

@@ -2,7 +2,7 @@
 
 from time import time
 
-from app.solve.process.monitoring import is_timed_out
+from app.run.process.monitoring import is_timed_out
 
 
 def test_monitor_process() -> None:

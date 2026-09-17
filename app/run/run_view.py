@@ -1,9 +1,9 @@
-"""App's solve view entry.
+"""App's run view entry.
 
 Functions
 ---------
 main() -> None \\
-display_solve_view(folder_path: Path) -> None \\
+display_run_view(folder_path: Path) -> None \\
 """
 
 import streamlit as st
@@ -16,22 +16,22 @@ from app.helpers.validators import is_there_a_config_yaml_in
 from app.session_state.getters import get_folder_path_from_ss
 from app.session_state.getters import get_is_solving_from_ss
 from app.session_state.setters import set_is_solving_in_ss
-from app.solve.process.monitoring import is_timed_out, monitor_process
-from app.solve.process.commands import get_solve_command
-from app.solve.constants import MSG_CREATE_CONFIG_FIRST
-from app.solve.constants import MSG_SELECT_FOLDER_FIRST
-from app.solve.envs.commands import get_environment_run_command
-from app.solve.envs.managers import get_installed_python_env_managers
-from app.solve.envs.python_envs import get_available_python_envs
-from app.solve.process.execution import get_subprocess_for
-from app.solve.process.termination import kill_process
-from app.solve.snakemake.rules import get_snakemake_rules
-from app.solve.snakemake.commands import get_snakemake_command
+from app.run.process.monitoring import is_timed_out, monitor_process
+from app.run.process.commands import get_solve_command
+from app.run.constants import MSG_CREATE_CONFIG_FIRST
+from app.run.constants import MSG_SELECT_FOLDER_FIRST
+from app.run.envs.commands import get_environment_run_command
+from app.run.envs.managers import get_installed_python_env_managers
+from app.run.envs.python_envs import get_available_python_envs
+from app.run.process.execution import get_subprocess_for
+from app.run.process.termination import kill_process
+from app.run.snakemake.rules import get_snakemake_solve_rules
+from app.run.snakemake.commands import get_snakemake_run_command
 
 
 @st.fragment()
-def display_solve_view(folder_path: Path) -> None:
-    """Display the solve view.
+def display_run_view(folder_path: Path) -> None:
+    """Display the run view.
     
     This is a streamlit fragment.
 
@@ -54,7 +54,10 @@ def display_solve_view(folder_path: Path) -> None:
         return None
 
     st.subheader("Snakemake", divider='blue')
-    snakemake_cmd = get_snakemake_command(folder_path, get_snakemake_rules)
+    snakemake_cmd = get_snakemake_run_command(
+        folder_path,
+        get_snakemake_solve_rules,
+    )
    
     st.subheader("Execution", divider='blue')
     col_1, col_2, col_3 = st.columns(
@@ -100,7 +103,7 @@ def display_solve_view(folder_path: Path) -> None:
 
 
 def main() -> None:
-    """Entry point for the solve view.
+    """Entry point for the run view.
     
     Returns
     -------
@@ -112,7 +115,7 @@ def main() -> None:
     elif not is_there_a_config_yaml_in(pypsa_earth_folder_path):
         display_as_warning(MSG_CREATE_CONFIG_FIRST)
     else:
-        display_solve_view(pypsa_earth_folder_path)
+        display_run_view(pypsa_earth_folder_path)
 
 
 if __name__ == '__main__':

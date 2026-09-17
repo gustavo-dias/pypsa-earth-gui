@@ -1,6 +1,6 @@
 """Tests for module commands.py."""
 
-from app.solve.process.commands import get_solve_command
+from app.run.process.commands import get_solve_command
 
 def test_get_solve_command() -> None:
     """"""

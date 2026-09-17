@@ -5,33 +5,33 @@ commands.
 
 Functions
 ---------
-get_snakemake_command(
+get_snakemake_run_command(
     folder_path: Path,
     getter_snakemake_rules: Callable[[Path], list[str]],
 ) -> str:
 """
 
+import streamlit as st
+
 from os import cpu_count
 from pathlib import Path
 from typing import Callable
 
-import streamlit as st
 
-
-def get_snakemake_command(
+def get_snakemake_run_command(
         folder_path: Path,
         getter_snakemake_rules: Callable[[Path], list[str]],
     ) -> str:
-    """Get a valid PyPSA-Earth snakemake command.
+    """Get a valid PyPSA-Earth snakemake run command.
     
-    Format: 'snakemake -j {cores} [-n] [other_args] solve_rule'.
+    Format: 'snakemake -j {cores} [-n] [other_args] rule'.
 
     Parameters
     ----------
     folder_path: Path,
         The path to PyPSA-Earth's local installation.
     getter_snakemake_rules: Callable[[Path], list[str]],
-        A callable to retrieve the snakemake solve rules from PyPSA-Earth's
+        A callable to retrieve the snakemake rules from PyPSA-Earth's
         snakemake file.
 
     Returns
@@ -53,8 +53,10 @@ def get_snakemake_command(
         help='E.g.: ""',
     )
     selected_rule: str | None = col_4.selectbox(
-        "PyPSA-Earth solve command:",
+        "PyPSA-Earth rules:",
         options=getter_snakemake_rules(folder_path),
+        accept_new_options=True,
+        help="Choose (or add) a rule.",
     )
 
     cmd: str = f"snakemake -j {cores} "

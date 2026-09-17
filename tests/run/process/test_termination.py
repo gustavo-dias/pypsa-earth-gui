@@ -3,7 +3,7 @@
 from typing import Generator
 # from subprocess import Popen
 
-# from app.solve.process.termination import kill_process
+# from app.run.process.termination import kill_process
 from pytest_subprocess.fixtures import fp, FakeProcess
 
 
