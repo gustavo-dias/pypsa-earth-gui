@@ -1,4 +1,4 @@
-"""PyPSA-Earth solve process execution.
+"""PyPSA-Earth process execution.
 
 This module provides a function to initialize a python subprocess containing a
 PyPSA-Earth run.
@@ -12,6 +12,7 @@ from shlex import split
 from subprocess import PIPE, STDOUT, Popen
 
 from app.helpers.ui.messages import display_as_error
+from app.run.constants import MSG_ERROR_ON_TRYING_TO_RUN_COMMAND
 from app.session_state.setters import set_is_solving_in_ss
 
 
@@ -43,9 +44,6 @@ def get_subprocess_for(command: str) -> Popen[str] | None:
             start_new_session=True, # to kill all (sub)processes as a group
         )
     except Exception:
-        display_as_error(
-            "Unexpected error on trying to solve. Try again or contact "
-            "the PyPSA-Earth GUI support."
-        )
+        display_as_error(MSG_ERROR_ON_TRYING_TO_RUN_COMMAND)
         set_is_solving_in_ss(False)
         return None

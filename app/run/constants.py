@@ -15,6 +15,7 @@ RUN_BUTTON_ICON \\
 MSG_NO_ENV_MNGR_INSTALLED \\
 MNGR_SELECTBOX_LABEL \\
 ENV_SELECTBOX_LABEL \\
+MSG_ERROR_ON_TRYING_TO_RUN_COMMAND \\
 """
 
 from typing import Literal
@@ -38,3 +39,7 @@ MSG_NO_ENV_MNGR_INSTALLED = "No Python environment manager installed. Check " \
     + "your PyPSA-Earth installation."
 MNGR_SELECTBOX_LABEL = "Manager:"
 ENV_SELECTBOX_LABEL = "PyPSA-Earth Environment:"
+
+###### PROCESS EXECUTION CONSTANTS ######
+MSG_ERROR_ON_TRYING_TO_RUN_COMMAND = "Unexpected error on trying to run " \
+    + "command. Try again or contact the PyPSA-Earth GUI support."
