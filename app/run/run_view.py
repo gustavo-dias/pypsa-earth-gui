@@ -19,10 +19,10 @@ from app.session_state.setters import set_is_solving_in_ss
 from app.run.process.monitoring import is_timed_out, monitor_process
 from app.run.process.commands import get_solve_command
 from app.run.constants import DIVIDER_COLOR, EXECUTION_SUBHEADER_LABEL
-from app.run.constants import MSG_CREATE_CONFIG_FIRST
+from app.run.constants import MSG_CREATE_CONFIG_FIRST, TIMEOUT_HELPER
 from app.run.constants import PYTHON_ENVS_SUBHEADER_LABEL
 from app.run.constants import SNAKEMAKE_SUBHEADER_LABEL
-from app.run.constants import MSG_SELECT_FOLDER_FIRST
+from app.run.constants import MSG_SELECT_FOLDER_FIRST, TIMEOUT_LABEL
 from app.run.envs.commands import get_environment_run_command
 from app.run.envs.managers import get_installed_python_env_managers
 from app.run.envs.python_envs import get_available_python_envs
@@ -69,11 +69,11 @@ def display_run_view(folder_path: Path) -> None:
         gap='large',
     )
     selected_timeout = col_1.number_input(
-        "Timeout (m):",
+        TIMEOUT_LABEL,
         min_value=0,
         value=60,
         step=1,
-        help="In minutes. Set to 0 for no timeout (not recommended)."
+        help=TIMEOUT_HELPER,
     )
     if col_2.button(
         "Run",
