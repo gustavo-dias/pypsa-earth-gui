@@ -26,7 +26,7 @@ from app.run.envs.python_envs import get_available_python_envs
 from app.run.process.execution import get_subprocess_for
 from app.run.process.termination import kill_process
 from app.run.snakemake.rules import get_snakemake_solve_rules
-from app.run.snakemake.commands import get_snakemake_command
+from app.run.snakemake.commands import get_snakemake_run_command
 
 
 @st.fragment()
@@ -54,7 +54,7 @@ def display_run_view(folder_path: Path) -> None:
         return None
 
     st.subheader("Snakemake", divider='blue')
-    snakemake_cmd = get_snakemake_command(
+    snakemake_cmd = get_snakemake_run_command(
         folder_path,
         get_snakemake_solve_rules,
     )

@@ -5,7 +5,7 @@ commands.
 
 Functions
 ---------
-get_snakemake_command(
+get_snakemake_run_command(
     folder_path: Path,
     getter_snakemake_rules: Callable[[Path], list[str]],
 ) -> str:
@@ -18,11 +18,11 @@ from pathlib import Path
 from typing import Callable
 
 
-def get_snakemake_command(
+def get_snakemake_run_command(
         folder_path: Path,
         getter_snakemake_rules: Callable[[Path], list[str]],
     ) -> str:
-    """Get a valid PyPSA-Earth snakemake command.
+    """Get a valid PyPSA-Earth snakemake run command.
     
     Format: 'snakemake -j {cores} [-n] [other_args] rule'.
 
