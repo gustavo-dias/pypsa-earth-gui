@@ -18,7 +18,7 @@ from app.session_state.getters import get_is_solving_from_ss
 from app.session_state.setters import set_is_solving_in_ss
 from app.run.process.monitoring import is_timed_out, monitor_process
 from app.run.process.commands import get_solve_command
-from app.run.constants import DIVIDER_COLOR, EXECUTION_SUBHEADER_LABEL
+from app.run.constants import RUN_DIVIDER_COLOR, EXECUTION_SUBHEADER_LABEL
 from app.run.constants import MSG_CREATE_CONFIG_FIRST, TIMEOUT_HELPER
 from app.run.constants import PYTHON_ENVS_SUBHEADER_LABEL, RUN_BUTTON_ICON
 from app.run.constants import SNAKEMAKE_SUBHEADER_LABEL, RUN_BUTTON_LABEL
@@ -47,7 +47,7 @@ def display_run_view(folder_path: Path) -> None:
     -------
     None
     """
-    st.subheader(PYTHON_ENVS_SUBHEADER_LABEL, divider=DIVIDER_COLOR)
+    st.subheader(PYTHON_ENVS_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     env_cmd = get_environment_run_command(
         folder_path,
         get_installed_python_env_managers,
@@ -56,13 +56,13 @@ def display_run_view(folder_path: Path) -> None:
     if env_cmd is None:
         return None
 
-    st.subheader(SNAKEMAKE_SUBHEADER_LABEL, divider=DIVIDER_COLOR)
+    st.subheader(SNAKEMAKE_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     snakemake_cmd = get_snakemake_run_command(
         folder_path,
         get_snakemake_solve_rules,
     )
    
-    st.subheader(EXECUTION_SUBHEADER_LABEL, divider=DIVIDER_COLOR)
+    st.subheader(EXECUTION_SUBHEADER_LABEL, divider=RUN_DIVIDER_COLOR)
     col_1, col_2, col_3 = st.columns(
         (0.2, 0.2, 0.2),
         vertical_alignment='bottom',
