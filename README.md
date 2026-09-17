@@ -8,13 +8,15 @@ An unofficial graphical user interface (GUI) for [PyPSA-Earth](https://github.co
 2. Solve it and;
 3. Visualize the results.
 
-**Development status: currently only steps 1 and 2 are supported (as of 2026-08-14).**
+**Development status: currently only steps 1 and 2 are supported (as of 2026-09-17).**
 
 ## Installation
 
-#### Linux (Performed on Ubuntu 24.04.4 LTS).
+### Prerequisites
+Having a working installation of PyPSA-Earth and all its dependencies in the (local) machine. If there is not, [install](https://pypsa-earth.readthedocs.io/en/latest/index.html) it first.
 
-We assume there is a working installation of PyPSA-Earth and all its dependencies in the (local) machine. If not, [install](https://pypsa-earth.readthedocs.io/en/latest/index.html) it first. Then:
+### Procedure
+#### For Linux (Performed on Ubuntu 24.04.4 LTS).
 
 1. Clone the repo to disk:
     ```
