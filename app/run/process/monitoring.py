@@ -17,13 +17,11 @@ import streamlit as st
 
 from time import time
 from subprocess import Popen
-from typing import Callable, Literal
+from typing import Callable
 
 from app.helpers.ui.messages import display_as_error
+from app.run.constants import MINUTES_TO_SECONDS, MSG_ERROR_DURING_RUN
 from app.session_state.setters import set_is_solving_in_ss
-
-
-MINUTES_TO_SECONDS: Literal[60] = 60
 
 
 @st.fragment
@@ -74,10 +72,7 @@ def monitor_process(
                 timed_out = True
                 break
     except Exception:
-        display_as_error(
-            "Unexpected error during solving process. Try again or contact " \
-            "the PyPSA-Earth GUI support."
-        )
+        display_as_error(MSG_ERROR_DURING_RUN)
     finally:
         set_is_solving_in_ss(False)
         return timed_out, (time()-start_time)

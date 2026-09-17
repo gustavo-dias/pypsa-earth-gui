@@ -43,3 +43,8 @@ ENV_SELECTBOX_LABEL = "PyPSA-Earth Environment:"
 ###### PROCESS EXECUTION CONSTANTS ######
 MSG_ERROR_ON_TRYING_TO_RUN_COMMAND = "Unexpected error on trying to run " \
     + "command. Try again or contact the PyPSA-Earth GUI support."
+
+###### PROCESS MONITORING CONSTANTS ######
+MINUTES_TO_SECONDS: Literal[60] = 60
+MSG_ERROR_DURING_RUN = "Unexpected error when running PyPSA-Earth. " \
+    + "Try again or contact the PyPSA-Earth GUI support."
