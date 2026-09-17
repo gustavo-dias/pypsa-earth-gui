@@ -12,6 +12,9 @@ TIMEOUT_LABEL \\
 TIMEOUT_HELPER \\
 RUN_BUTTON_LABEL \\
 RUN_BUTTON_ICON \\
+MSG_NO_ENV_MNGR_INSTALLED \\
+MNGR_SELECTBOX_LABEL \\
+ENV_SELECTBOX_LABEL \\
 """
 
 from typing import Literal
@@ -29,3 +32,9 @@ TIMEOUT_LABEL = "Timeout (m):"
 TIMEOUT_HELPER = "In minutes. Set to 0 for no timeout (not recommended)."
 RUN_BUTTON_LABEL = "Run"
 RUN_BUTTON_ICON = ":material/play_circle:" 
+
+###### ENVS COMMANDS CONSTANTS ######
+MSG_NO_ENV_MNGR_INSTALLED = "No Python environment manager installed. Check " \
+    + "your PyPSA-Earth installation."
+MNGR_SELECTBOX_LABEL = "Manager:"
+ENV_SELECTBOX_LABEL = "PyPSA-Earth Environment:"
